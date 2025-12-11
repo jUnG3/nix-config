@@ -1,0 +1,44 @@
+@define-color base #1e1e2e;
+@define-color text #cdd6f4;
+@define-color blue #89b4fa;
+@define-color red #f38ba8;
+@define-color lavender #b4befe;
+
+* {
+  font-family: "Fira Code Nerd Font", monospace;
+  font-size: 14px;
+  color: @text;
+}
+
+.modules-right > widget > * {
+    margin: 0 4px 0 0;
+}
+
+window#waybar {
+  background: rgba(30, 30, 46, 0.75);
+  border-bottom: 1px solid @lavender;
+}
+
+#workspaces button {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: transparent;
+}
+
+#workspaces button.active {
+  background: rgba(180, 190, 254, 0.15);
+  color: @lavender;
+}
+
+#workspaces button:hover {
+  background: rgba(180, 190, 254, 0.30);
+}
+
+#custom-power {
+  color: @red;
+}
+
+#custom-power:hover {
+  background: rgba(243,139,168,0.2);
+}
+

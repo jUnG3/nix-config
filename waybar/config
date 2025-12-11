@@ -1,0 +1,98 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "cpu",
+    "temperature",
+    "memory",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "custom/power"
+  ],
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": ""
+    }
+  },
+  "hyprland/window": {
+    "format": "{icon} {title}",
+    "max-length": 40,
+    "icon": true,
+    "separate-outputs": false
+  },
+
+  "clock": {
+    "format": "{:%Y-%m-%d  %H:%M}",
+    "tooltip": false
+  },
+
+  "battery": {
+    "format": "{capacity}% ",
+    "format-charging": "{capacity}% ",
+    "tooltip": true
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": false
+  },
+
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format": " {temperatureC}°C",
+    "tooltip": true
+  },
+
+  "memory": {
+    "format": " {used}GiB",
+    "tooltip": false
+  },
+
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": "󰈁 {ipaddr}",
+    "format-disconnected": "󰖪",
+    "tooltip": true
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "",
+    "format-connected": " {device_alias}",
+    "tooltip": true
+  },
+
+  "pulseaudio": {
+    "format": "{volume}% ",
+    "format-muted": "",
+    "scroll-step": 2,
+    "tooltip": false
+  },
+  "custom/power": {
+    "format": "",
+    "on-click": "~/.config/wofi/power.sh",
+    "tooltip": false
+  }
+}
+
