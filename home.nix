@@ -19,6 +19,7 @@
     ranger
     bat
     neovim
+    spotify
 
     gcc
     gdb
