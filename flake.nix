@@ -5,17 +5,16 @@
 
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    hardware-config.url = "path:/etc/nixos/hardware-configuration.nix";
   };
 
-  outputs = {self, nixpkgs, home-manager, hardware-config, ...}:
+  outputs = {self, nixpkgs, home-manager, ...}:
   let
     system = "x86_64-linux";
   in {
     nixosConfigurations."workhorse" = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
-        hardware-config
+        /etc/nixos/hardware-configuration.nix
         ./configuration.nix
 
         home-manager.nixosModules.home-manager
