@@ -32,7 +32,33 @@
 
     jdk21
     gradle
+    discord
   ];
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    oh-my-zsh = { # "ohMyZsh" without Home Manager
+      enable = true;
+      plugins = [ "git" "thefuck" "docker" ];
+      theme = "robbyrussell";
+    };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    fileWidgetCommand = "fd --type f";
+    fileWidgetOptions = [
+      "--preview 'head {}'"
+    ];
+    historyWidgetOptions = [
+      "--preview 'head {}'"
+    ];
+  };
 
   xdg.configFile."hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
 
