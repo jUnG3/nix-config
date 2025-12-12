@@ -10,6 +10,9 @@
 
   programs.ssh.startAgent = true;
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   time.timeZone = "Europe/Zagreb";
 
   i18n.defaultLocale = "en_US.UTF-8";

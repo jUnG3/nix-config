@@ -33,6 +33,7 @@
     jdk21
     gradle
     discord
+    fd
   ];
 
   programs.zsh = {
