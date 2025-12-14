@@ -34,6 +34,12 @@
     gradle
     discord
     fd
+    pass
+    rofi-pass
+    wtype
+    wl-clipboard
+    gnupg
+    steam
   ];
 
   programs.zsh = {
@@ -43,7 +49,7 @@
     syntaxHighlighting.enable = true;
     oh-my-zsh = { # "ohMyZsh" without Home Manager
       enable = true;
-      plugins = [ "git" "thefuck" "docker" ];
+      plugins = [ "git" "docker" ];
       theme = "robbyrussell";
     };
   };
@@ -61,6 +67,25 @@
     ];
   };
 
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi;   # for Hyprland/Wayland
+    theme = "rounded-nord-dark.rasi";          # loads ~/.config/rofi/themes/tokyonight.rasi
+    extraConfig = {
+      modi = "drun,run,window,ssh";
+      show-icons = true;
+    };
+    pass.package = pkgs.rofi-pass;
+  };
+
+  programs.gpg.enable = true;
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = false;     # you said SSH part is already done
+    pinentryPackage = pkgs.pinentry-gnome3;  # or pinentry-qt / pinentry-curses
+  };
+
   xdg.configFile."hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
 
   xdg.configFile."waybar/config".source = ./waybar/config;
@@ -72,4 +97,30 @@
     source = ./wofi/power.sh;
   };
 
+  xdg.configFile."rofi/themes/rounded-nord-dark.rasi".source =
+    ./rofi-themes-collection/themes/rounded-nord-dark.rasi;
+  xdg.configFile."rofi/themes/template/rounded-template.rasi".source = ./rofi-themes-collection/themes/template/rounded-template.rasi;
+
+xdg.configFile."rofi-pass/config".text = ''
+# Use rofi as the UI
+ROFI_CMD="rofi -dmenu -i"
+
+# Clipboard handling on Wayland
+CLIP_CMD="wl-copy"
+CLIP_CLEAR_CMD="wl-copy -c"
+
+# Clear clipboard after N seconds
+CLIP_TIME=15
+
+# Type password (Wayland)
+TYPE_CMD="wtype"
+
+# Default action:
+#   - If you want "copy password" by default, keep it like this.
+# rofi-pass supports multiple actions via keybinds in the menu.
+DEFAULT_ACTION="copy"
+
+# Store location (default is ~/.password-store; set only if custom)
+PASSWORD_STORE_DIR="$HOME/.password-store"
+'';
 }

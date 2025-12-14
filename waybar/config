@@ -15,7 +15,8 @@
     "network",
     "bluetooth",
     "pulseaudio",
-    "custom/power"
+    "custom/power",
+    "tray"
   ],
 
   "hyprland/workspaces": {
