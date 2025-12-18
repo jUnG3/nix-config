@@ -31,6 +31,7 @@
     ccache
 
     jdk21
+    python315
     gradle
     discord
     fd
@@ -40,6 +41,13 @@
     wl-clipboard
     gnupg
     steam
+    naps2
+
+    winetricks
+    protontricks
+    steam-run
+    unzip
+    zip
   ];
 
   programs.zsh = {
@@ -86,6 +94,10 @@
     pinentryPackage = pkgs.pinentry-gnome3;  # or pinentry-qt / pinentry-curses
   };
 
+  programs.emacs = {
+    enable = true;
+  };
+
   xdg.configFile."hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
 
   xdg.configFile."waybar/config".source = ./waybar/config;
@@ -123,4 +135,6 @@ DEFAULT_ACTION="copy"
 # Store location (default is ~/.password-store; set only if custom)
 PASSWORD_STORE_DIR="$HOME/.password-store"
 '';
+
+  xdg.configFile."emacs/init.el".source = ./emacs/init.el;
 }

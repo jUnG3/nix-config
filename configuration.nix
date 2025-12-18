@@ -16,6 +16,9 @@
   time.timeZone = "Europe/Zagreb";
 
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ALL = "en_US.UTF-8";
+  };
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -36,9 +39,15 @@
   };
   programs.gamemode.enable = true;
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
   users.users.junge = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "audio" "video" "input"];
+    extraGroups = ["wheel" "networkmanager" "audio" "video" "input" "scanner" "lpadmin"];
   };
 
   users.mutableUsers = true;
@@ -119,4 +128,14 @@
       };
     };
   };
+
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
+  hardware.sane.enable = true;
 }
