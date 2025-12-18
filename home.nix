@@ -29,6 +29,9 @@
     ninja
     pkg-config
     ccache
+    lua-language-server
+    yaml-language-server
+    ripgrep
 
     jdk21
     python315
