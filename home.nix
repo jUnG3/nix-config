@@ -22,6 +22,7 @@
     spotify
 
     gcc
+    llvmPackages_20.clang-unwrapped
     gdb
     valgrind
     cmake
