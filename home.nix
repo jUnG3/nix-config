@@ -53,6 +53,8 @@
     unzip
     zip
     wf-recorder
+    obs-studio
+    slurp
   ];
 
   programs.zsh = {
