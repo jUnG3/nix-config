@@ -52,6 +52,7 @@
     steam-run
     unzip
     zip
+    wf-recorder
   ];
 
   programs.zsh = {
