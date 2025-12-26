@@ -83,7 +83,10 @@
       user = "junge";
     };
   };
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
 
   xdg.portal = {
     enable = true;
@@ -98,7 +101,6 @@
     htop
     alacritty
     waybar
-    hyprpaper
     hyprlock
     firefox
     foot

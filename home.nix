@@ -55,6 +55,11 @@
     wf-recorder
     obs-studio
     slurp
+    mc
+    ranger
+    lf
+    lsof
+    kodi
   ];
 
   programs.zsh = {
@@ -101,6 +106,23 @@
     pinentryPackage = pkgs.pinentry-gnome3;  # or pinentry-qt / pinentry-curses
   };
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemd.enable = true;
+  };
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      preload = [
+        "$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
+      ];
+      wallpaper = [
+        ",$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
+      ];
+    };
+  };
   programs.emacs = {
     enable = true;
   };
