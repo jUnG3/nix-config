@@ -60,6 +60,11 @@
     lf
     lsof
     kodi
+    shotwell
+
+    rclone
+    fuse3
+    libsecret
   ];
 
   programs.zsh = {
@@ -122,6 +127,9 @@
         ",$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
       ];
     };
+  };
+  systemd.user.services.hyprpaper = {
+    Install.WantedBy = [ "default.target" ];
   };
   programs.emacs = {
     enable = true;
