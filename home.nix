@@ -22,7 +22,7 @@
     spotify
 
     gcc
-    llvmPackages_20.clang-unwrapped
+    clang-tools
     gdb
     valgrind
     cmake
@@ -47,8 +47,12 @@
     steam
     naps2
 
+    # support both 32-bit and 64-bit applications
+    wineWowPackages.stable
     winetricks
+    unrar
     protontricks
+    cdrtools
     steam-run
     unzip
     zip
