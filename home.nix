@@ -46,8 +46,11 @@
     gnupg
     steam
     naps2
+    file
+    samba
 
     # support both 32-bit and 64-bit applications
+    lutris
     wineWowPackages.stable
     winetricks
     unrar
