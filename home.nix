@@ -50,9 +50,23 @@
     samba
 
     # support both 32-bit and 64-bit applications
-    lutris
-    wineWowPackages.stable
+    wine
     winetricks
+
+    vulkan-loader
+    libGL
+    wayland
+
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXrandr
+    xorg.libXinerama
+    xorg.libXi
+    xorg.libXpresent
+    xorg.libXcomposite
+    xorg.libXdamage
+    xorg.libXfixes
+    xorg.libxcb
     unrar
     protontricks
     cdrtools
