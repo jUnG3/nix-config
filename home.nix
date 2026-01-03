@@ -20,6 +20,7 @@
     bat
     neovim
     spotify
+    kdePackages.kdenlive
 
     gcc
     clang-tools
@@ -51,6 +52,7 @@
 
     # support both 32-bit and 64-bit applications
     wine
+    lutris
     winetricks
 
     vulkan-loader
@@ -90,7 +92,6 @@
 
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     oh-my-zsh = { # "ohMyZsh" without Home Manager
