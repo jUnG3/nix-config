@@ -156,6 +156,38 @@
   programs.emacs = {
     enable = true;
   };
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "FiraCode Nerd Font";
+      size = 12;
+    };
+    settings = {
+      background_opacity = 0.9;
+    };
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window.opacity = 0.9;
+      font = {
+        size = 12;
+        normal = {
+          family = "FiraCode Nerd Font";
+	  style = "Regular";
+        };
+        italic = {
+          family = "FiraCode Nerd Font";
+	  style = "Italic";
+        };
+        bold = {
+          family = "FiraCode Nerd Font";
+	  style = "Bold";
+        };
+      };
+    };
+  };
 
   xdg.configFile."hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
 
