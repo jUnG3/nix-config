@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  mountPoint = "${config.home.homeDirectory}/mnt/ivana-slike";
+in
 {
   home.username = "junge";
   home.homeDirectory = "/home/junge";
@@ -186,6 +189,65 @@
         ",$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
       ];
     };
+  };
+
+  systemd.user.services.rclone-gdrive = {
+    Unit = {
+      Description = "Rclone mount: Google Drive (config from Secret Service)";
+      After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
+    };
+
+    Service = {
+      Type = "simple";
+
+      ExecStartPre = pkgs.writeShellScript "rclone-secret-prep" ''
+        set -euo pipefail
+        umask 077
+
+        if [ -z "''${XDG_RUNTIME_DIR:-}" ]; then
+          echo "ERROR: XDG_RUNTIME_DIR is not set."
+          exit 1
+        fi
+
+        runtime_dir="$XDG_RUNTIME_DIR/rclone"
+        runtime_conf="$runtime_dir/rclone.conf"
+
+        mkdir -p "$runtime_dir"
+        chmod 700 "$runtime_dir"
+
+        conf="$(${pkgs.libsecret}/bin/secret-tool lookup service rclone name ivana-photos-conf 2>/dev/null || true)"
+        if [ -z "$conf" ]; then
+          echo "ERROR: Could not retrieve secret (service=rclone name=ivana-photos-conf)."
+          echo "Check: KeePassXC running + DB unlocked + Secret Service enabled."
+          exit 1
+        fi
+
+        printf "%s\n" "$conf" > "$runtime_conf"
+        chmod 600 "$runtime_conf"
+
+        echo "Wrote rclone.conf to $runtime_conf"
+      '';
+
+      ExecStart = pkgs.writeShellScript "rclone-mount-gdrive" ''
+        set -euo pipefail
+
+        runtime_conf="$XDG_RUNTIME_DIR/rclone/rclone.conf"
+
+        exec ${pkgs.rclone}/bin/rclone mount ivana-photos: ${mountPoint} \
+          --config "$runtime_conf" \
+          --vfs-cache-mode writes \
+          --dir-cache-time 72h \
+          --poll-interval 1m \
+          --umask 077
+      '';
+
+      ExecStop = "${pkgs.fuse3}/bin/fusermount3 -u ${mountPoint}";
+      Restart = "on-failure";
+      RestartSec = 3;
+    };
+
+    Install = { WantedBy = [ "default.target" ]; };
   };
 
   xdg.configFile."hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
