@@ -138,21 +138,6 @@
     systemd.enable = true;
   };
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      ipc = "on";
-      preload = [
-        "$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
-      ];
-      wallpaper = [
-        ",$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
-      ];
-    };
-  };
-  systemd.user.services.hyprpaper = {
-    Install.WantedBy = [ "default.target" ];
-  };
   programs.emacs = {
     enable = true;
   };
