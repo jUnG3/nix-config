@@ -141,6 +141,7 @@
   programs.emacs = {
     enable = true;
   };
+
   programs.kitty = {
     enable = true;
     font = {
@@ -171,6 +172,19 @@
 	  style = "Bold";
         };
       };
+    };
+  };
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      preload = [
+        "$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
+      ];
+      wallpaper = [
+        ",$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
+      ];
     };
   };
 
