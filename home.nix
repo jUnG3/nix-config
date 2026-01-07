@@ -24,6 +24,9 @@ in
     neovim
     spotify
     kdePackages.kdenlive
+    gnucash
+    libreoffice
+    audacity
 
     gcc
     clang-tools
