@@ -136,7 +136,7 @@ in
   services.gpg-agent = {
     enable = true;
     enableSshSupport = false;     # you said SSH part is already done
-    pinentryPackage = pkgs.pinentry-gnome3;  # or pinentry-qt / pinentry-curses
+    pinentry.package = pkgs.pinentry-gnome3;  # or pinentry-qt / pinentry-curses
   };
 
   wayland.windowManager.hyprland = {
