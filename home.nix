@@ -99,6 +99,7 @@ in
     mpc
     krita
     libnotify
+    transmission_4
   ];
 
   programs.zsh = {
