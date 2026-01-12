@@ -2,6 +2,8 @@
   "layer": "top",
   "position": "top",
   "height": 34,
+  "expand-center": true,
+  "spacing": 4,
   "modules-left": [
     "hyprland/workspaces"
   ],
@@ -9,6 +11,7 @@
     "clock"
   ],
   "modules-right": [
+    "mpd",
     "cpu",
     "temperature",
     "memory",
@@ -24,16 +27,19 @@
     "all-outputs": true,
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
+      "1": "󰈹",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "󱎓",
+      "6": "󰭹",
       "7": "",
       "8": "",
       "9": ""
     }
+  },
+  "mpd": {
+    "format": " {title}"
   },
   "hyprland/window": {
     "format": "{icon} {title}",

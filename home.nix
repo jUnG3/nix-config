@@ -147,6 +147,13 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+    settings = {
+      exec-once = [
+        # Fixes cursor themes in gnome apps under hyprland
+        "gsettings set org.gnome.desktop.interface cursor-theme ArcStarry"
+        "gsettings set org.gnome.desktop.interface cursor-size 24"
+      ];
+    };
   };
 
   programs.emacs = {
