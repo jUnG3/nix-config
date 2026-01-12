@@ -98,6 +98,7 @@ in
     ncmpcpp
     mpc
     krita
+    libnotify
   ];
 
   programs.zsh = {
@@ -208,6 +209,10 @@ in
       name "My PulseAudio" # this can be whatever you want
     }
 '';
+  };
+
+  services.dunst = {
+    enable = true;
   };
 
   programs.ncmpcpp = {
