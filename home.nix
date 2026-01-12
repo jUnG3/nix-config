@@ -94,6 +94,10 @@ in
     rclone
     fuse3
     libsecret
+
+    ncmpcpp
+    mpc
+    krita
   ];
 
   programs.zsh = {
@@ -194,6 +198,28 @@ in
     };
   };
 
+  services.mpd = {
+    enable = true;
+
+    musicDirectory = "/home/junge/Music";
+    extraConfig = ''
+    audio_output {
+      type "pulse"
+      name "My PulseAudio" # this can be whatever you want
+    }
+'';
+  };
+
+  programs.ncmpcpp = {
+    enable = true;
+    settings = {
+      mpd_host = "127.0.0.1";
+      mpd_port = "6600";
+      autocenter_mode = "yes";
+      centered_cursor = "yes";
+      user_interface = "alternative";
+    };
+  };
   systemd.user.services.rclone-gdrive = {
     Unit = {
       Description = "Rclone mount: Google Drive (config from Secret Service)";
