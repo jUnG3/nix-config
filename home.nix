@@ -100,7 +100,54 @@ in
     krita
     libnotify
     transmission_4
+    kdePackages.okular
+    qt6Packages.qt6ct
+    kdePackages.breeze
   ];
+
+  dconf = {
+    settings = {
+      "org.freedesktop.appearance" = {
+       color-scheme = "prefer-dark";
+      };
+    };
+  };
+
+  xdg = {
+    enable = true;
+    portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      config.common.default = "*";
+    };
+
+    mimeApps = {
+      enable = true;
+      associations.added = {
+        "application/pdf" = ["org.kde.okular.desktop"];
+      };
+      defaultApplications = {
+        "application/pdf" = ["org.kde.okular.desktop"];
+      };
+    };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+
+    gtk3.extraConfig."gtk-application-prefer-dark-theme" = 1;
+    gtk4.extraConfig."gtk-application-prefer-dark-theme" = 1;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+    style.name = "Breeze";
+  };
 
   programs.zsh = {
     enable = true;
