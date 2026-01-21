@@ -45,6 +45,8 @@
     dedicatedServer.openFirewall = true;
   };
 
+  programs.dconf.enable = true;
+
   users.users.junge = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "audio" "video" "input" "scanner" "lpadmin"];

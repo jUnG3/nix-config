@@ -103,12 +103,15 @@ in
     kdePackages.okular
     qt6Packages.qt6ct
     kdePackages.breeze
+    libsForQt5.qt5ct
   ];
 
   dconf = {
+    enable = true;
     settings = {
-      "org.freedesktop.appearance" = {
-       color-scheme = "prefer-dark";
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";   # THIS is the important one for GTK4/libadwaita
+        gtk-theme = "Adwaita-dark";     # helps GTK3 apps
       };
     };
   };
@@ -145,8 +148,8 @@ in
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
-    style.name = "Breeze";
+    platformTheme.name = "qt5ct";
+    style.name = "Breeze Dark";
   };
 
   programs.zsh = {
