@@ -27,6 +27,7 @@ in
     gnucash
     libreoffice
     audacity
+    ffmpeg-full
 
     gcc
     clang-tools
