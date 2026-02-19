@@ -20,6 +20,7 @@ in
     keepassxc
     git-credential-keepassxc
     ranger
+    yazi
     bat
     spotify
     kdePackages.kdenlive
@@ -38,6 +39,7 @@ in
     pkg-config
     ccache
     lua-language-server
+    stylua
     yaml-language-server
     ripgrep
 
