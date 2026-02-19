@@ -21,7 +21,6 @@ in
     git-credential-keepassxc
     ranger
     bat
-    neovim
     spotify
     kdePackages.kdenlive
     gnucash
@@ -43,6 +42,7 @@ in
     ripgrep
 
     jdk21
+    jdt-language-server
     python315
     gradle
     discord
@@ -145,6 +145,26 @@ in
 
     gtk3.extraConfig."gtk-application-prefer-dark-theme" = 1;
     gtk4.extraConfig."gtk-application-prefer-dark-theme" = 1;
+  };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
+
+    extraPackages = with pkgs; [
+      git
+      ripgrep
+      fd
+
+      # optional but commonly needed by plugins/tools
+      nodejs
+      python3
+    ];
+    plugins = with pkgs.vimPlugins; [
+      (nvim-treesitter.withAllGrammars)
+    ];
   };
 
   qt = {
