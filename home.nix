@@ -28,6 +28,7 @@ in
     libreoffice
     audacity
     ffmpeg-full
+    hyprshot
 
     gcc
     clang-tools
