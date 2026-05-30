@@ -94,6 +94,7 @@ in
     lsof
     kodi
     shotwell
+    imv
 
     rclone
     fuse3
@@ -108,6 +109,8 @@ in
     qt6Packages.qt6ct
     kdePackages.breeze
     libsForQt5.qt5ct
+
+    slack
   ];
 
   dconf = {
