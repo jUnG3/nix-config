@@ -4,10 +4,11 @@ let
   mountPoint = "${config.home.homeDirectory}/mnt/ivana-slike";
 in
 {
-  home.username = "junge";
-  home.homeDirectory = "/home/junge";
-
-  home.stateVersion = "25.11";
+  home = {
+    username = "junge";
+    homeDirectory = "/home/junge";
+    stateVersion = "25.11";
+  };
 
   home.packages = with pkgs; [
     alacritty
@@ -109,6 +110,9 @@ in
     qt6Packages.qt6ct
     kdePackages.breeze
     libsForQt5.qt5ct
+    nixfmt-rfc-style
+    nixd
+    statix
 
     slack
   ];
@@ -117,8 +121,8 @@ in
     enable = true;
     settings = {
       "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";   # THIS is the important one for GTK4/libadwaita
-        gtk-theme = "Adwaita-dark";     # helps GTK3 apps
+        color-scheme = "prefer-dark"; # THIS is the important one for GTK4/libadwaita
+        gtk-theme = "Adwaita-dark"; # helps GTK3 apps
       };
     };
   };
@@ -134,13 +138,13 @@ in
     mimeApps = {
       enable = true;
       associations.added = {
-        "application/pdf" = ["org.kde.okular.desktop"];
+        "application/pdf" = [ "org.kde.okular.desktop" ];
       };
       defaultApplications = {
-        "application/pdf" = ["org.kde.okular.desktop"];
-        "image/jpeg" = ["imv.desktop"];
-        "image/png" = ["imv.desktop"];
-        "image/webp" = ["imv.desktop"];
+        "application/pdf" = [ "org.kde.okular.desktop" ];
+        "image/jpeg" = [ "imv.desktop" ];
+        "image/png" = [ "imv.desktop" ];
+        "image/webp" = [ "imv.desktop" ];
       };
     };
   };
@@ -186,9 +190,13 @@ in
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    oh-my-zsh = { # "ohMyZsh" without Home Manager
+    oh-my-zsh = {
+      # "ohMyZsh" without Home Manager
       enable = true;
-      plugins = [ "git" "docker" ];
+      plugins = [
+        "git"
+        "docker"
+      ];
       theme = "robbyrussell";
     };
   };
@@ -208,8 +216,8 @@ in
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi;   # for Hyprland/Wayland
-    theme = "rounded-nord-dark.rasi";          # loads ~/.config/rofi/themes/tokyonight.rasi
+    package = pkgs.rofi; # for Hyprland/Wayland
+    theme = "rounded-nord-dark.rasi"; # loads ~/.config/rofi/themes/tokyonight.rasi
     extraConfig = {
       modi = "drun,run,window,ssh";
       show-icons = true;
@@ -221,8 +229,8 @@ in
 
   services.gpg-agent = {
     enable = true;
-    enableSshSupport = false;     # you said SSH part is already done
-    pinentry.package = pkgs.pinentry-gnome3;  # or pinentry-qt / pinentry-curses
+    enableSshSupport = false; # you said SSH part is already done
+    pinentry.package = pkgs.pinentry-gnome3; # or pinentry-qt / pinentry-curses
   };
 
   wayland.windowManager.hyprland = {
@@ -260,15 +268,15 @@ in
         size = 12;
         normal = {
           family = "FiraCode Nerd Font";
-	  style = "Regular";
+          style = "Regular";
         };
         italic = {
           family = "FiraCode Nerd Font";
-	  style = "Italic";
+          style = "Italic";
         };
         bold = {
           family = "FiraCode Nerd Font";
-	  style = "Bold";
+          style = "Bold";
         };
       };
     };
@@ -292,11 +300,11 @@ in
 
     musicDirectory = "/home/junge/Music";
     extraConfig = ''
-    audio_output {
-      type "pulse"
-      name "My PulseAudio" # this can be whatever you want
-    }
-'';
+      audio_output {
+        type "pulse"
+        name "My PulseAudio" # this can be whatever you want
+      }
+    '';
   };
 
   services.dunst = {
@@ -369,7 +377,9 @@ in
       RestartSec = 3;
     };
 
-    Install = { WantedBy = [ "default.target" ]; };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 
   xdg.configFile."hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
@@ -385,30 +395,31 @@ in
 
   xdg.configFile."rofi/themes/rounded-nord-dark.rasi".source =
     ./rofi-themes-collection/themes/rounded-nord-dark.rasi;
-  xdg.configFile."rofi/themes/template/rounded-template.rasi".source = ./rofi-themes-collection/themes/template/rounded-template.rasi;
+  xdg.configFile."rofi/themes/template/rounded-template.rasi".source =
+    ./rofi-themes-collection/themes/template/rounded-template.rasi;
 
-xdg.configFile."rofi-pass/config".text = ''
-# Use rofi as the UI
-ROFI_CMD="rofi -dmenu -i"
+  xdg.configFile."rofi-pass/config".text = ''
+    # Use rofi as the UI
+    ROFI_CMD="rofi -dmenu -i"
 
-# Clipboard handling on Wayland
-CLIP_CMD="wl-copy"
-CLIP_CLEAR_CMD="wl-copy -c"
+    # Clipboard handling on Wayland
+    CLIP_CMD="wl-copy"
+    CLIP_CLEAR_CMD="wl-copy -c"
 
-# Clear clipboard after N seconds
-CLIP_TIME=15
+    # Clear clipboard after N seconds
+    CLIP_TIME=15
 
-# Type password (Wayland)
-TYPE_CMD="wtype"
+    # Type password (Wayland)
+    TYPE_CMD="wtype"
 
-# Default action:
-#   - If you want "copy password" by default, keep it like this.
-# rofi-pass supports multiple actions via keybinds in the menu.
-DEFAULT_ACTION="copy"
+    # Default action:
+    #   - If you want "copy password" by default, keep it like this.
+    # rofi-pass supports multiple actions via keybinds in the menu.
+    DEFAULT_ACTION="copy"
 
-# Store location (default is ~/.password-store; set only if custom)
-PASSWORD_STORE_DIR="$HOME/.password-store"
-'';
+    # Store location (default is ~/.password-store; set only if custom)
+    PASSWORD_STORE_DIR="$HOME/.password-store"
+  '';
 
   xdg.configFile."emacs/init.el".source = ./emacs/init.el;
 }
