@@ -138,6 +138,9 @@ in
       };
       defaultApplications = {
         "application/pdf" = ["org.kde.okular.desktop"];
+        "image/jpeg" = ["imv.desktop"];
+        "image/png" = ["imv.desktop"];
+        "image/webp" = ["imv.desktop"];
       };
     };
   };
