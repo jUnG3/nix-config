@@ -166,8 +166,13 @@ in
       acceleration = "rocm";
       package = pkgs.ollama-rocm;
       environmentVariables = {
-        HSA_OVERRIDE_GFX_VERSION = "10.3.0";
-        OLLAMA_CONTEXT_LENGTH = "8192";
+        HSA_OVERRIDE_GFX_VERSION = "10.1.0";
+        OLLAMA_CONTEXT_LENGTH = "2048";
+        OLLAMA_FLASH_ATTENTION = "false";
+        OLLAMA_HOST = "127.0.0.1:11434";
+        OLLAMA_MAX_LOADED_MODELS = "1";
+        OLLAMA_NUM_PARALLEL = "1";
+        OLLAMA_KEEP_ALIVE = "0";
       };
     };
   };
