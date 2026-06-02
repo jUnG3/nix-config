@@ -1,7 +1,10 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking = {
     hostName = "workhorse";
@@ -36,6 +39,10 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = [
+      pkgs.rocmPackages.clr.icd
+      pkgs.rocmPackages.hipcc
+    ];
   };
   programs.gamemode.enable = true;
 
@@ -49,7 +56,15 @@
 
   users.users.junge = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "audio" "video" "input" "scanner" "lpadmin"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "audio"
+      "video"
+      "input"
+      "scanner"
+      "lpadmin"
+    ];
   };
 
   users.mutableUsers = true;
@@ -126,7 +141,7 @@
 
     fontconfig = {
       defaultFonts = {
-        serif = [  "Fira Code" ];
+        serif = [ "Fira Code" ];
         sansSerif = [ "Fira Code" ];
         monospace = [ "Fira Code Mono" ];
       };

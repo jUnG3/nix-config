@@ -160,6 +160,23 @@ in
     gtk4.extraConfig."gtk-application-prefer-dark-theme" = 1;
   };
 
+  services = {
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+      package = pkgs.ollama-rocm;
+      environmentVariables = {
+        HSA_OVERRIDE_GFX_VERSION = "10.3.0";
+      };
+    };
+  };
+
+  programs = {
+    aider-chat = {
+      enable = true;
+    };
+  };
+
   programs.neovim = {
     enable = true;
     viAlias = true;
