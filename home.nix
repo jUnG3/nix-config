@@ -167,6 +167,7 @@ in
       package = pkgs.ollama-rocm;
       environmentVariables = {
         HSA_OVERRIDE_GFX_VERSION = "10.3.0";
+        OLLAMA_CONTEXT_LENGTH = "8192";
       };
     };
   };
