@@ -9,7 +9,6 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       ...
@@ -26,9 +25,11 @@
 
           home-manager.nixosModules.home-manager
           {
-            home-manager.users.junge = import ./home.nix;
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+            home-manager = {
+              users.junge = import ./home.nix;
+              useGlobalPkgs = true;
+              useUserPackages = true;
+            };
           }
         ];
       };

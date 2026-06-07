@@ -35,7 +35,14 @@
   powerManagement.cpuFreqGovernor = "schedutil";
 
   boot.initrd.kernelModules = [ "amdgpu" ];
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services = {
+    usbmuxd = {
+      enable = true;
+    };
+    xserver = {
+      videoDrivers = [ "amdgpu" ];
+    };
+  };
   hardware.graphics = {
     enable = true;
     enable32Bit = true;

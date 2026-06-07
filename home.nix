@@ -181,6 +181,9 @@ in
     aider-chat = {
       enable = true;
     };
+    btop = {
+      enable = true;
+    };
   };
 
   programs.neovim = {
