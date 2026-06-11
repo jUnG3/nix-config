@@ -51,14 +51,6 @@
     ];
     initrd = {
       kernelModules = [ "amdgpu" ];
-      services = {
-        usbmuxd = {
-          enable = true;
-        };
-        xserver = {
-          videoDrivers = [ "amdgpu" ];
-        };
-      };
     };
   };
 
@@ -106,7 +98,15 @@
     blueman.enable = true;
     openssh.enable = false;
     rtkit.enable = true;
-    xserver.enable = false;
+
+    usbmuxd = {
+      enable = true;
+    };
+
+    xserver = {
+      enable = false;
+      videoDrivers = [ "amdgpu" ];
+    };
 
     pipewire = {
       enable = true;
