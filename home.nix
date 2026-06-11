@@ -96,6 +96,7 @@ in
     kodi
     shotwell
     imv
+    lazygit
 
     rclone
     fuse3
@@ -184,26 +185,25 @@ in
     btop = {
       enable = true;
     };
-  };
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      defaultEditor = true;
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    defaultEditor = true;
+      extraPackages = with pkgs; [
+        git
+        ripgrep
+        fd
 
-    extraPackages = with pkgs; [
-      git
-      ripgrep
-      fd
-
-      # optional but commonly needed by plugins/tools
-      nodejs
-      python3
-    ];
-    plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withAllGrammars)
-    ];
+        # optional but commonly needed by plugins/tools
+        nodejs
+        python3
+      ];
+      plugins = with pkgs.vimPlugins; [
+        nvim-treesitter.withAllGrammars
+      ];
+    };
   };
 
   qt = {
