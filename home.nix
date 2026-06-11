@@ -349,6 +349,51 @@ in
     };
   };
 
+  xdg = {
+    configFile = {
+      "hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
+
+      "waybar/config".source = ./waybar/config;
+
+      "waybar/style.css".source = ./waybar/style.css;
+
+      "wofi/power.sh" = {
+        executable = true;
+        source = ./wofi/power.sh;
+      };
+
+      "rofi/themes/rounded-nord-dark.rasi".source =
+        ./rofi-themes-collection/themes/rounded-nord-dark.rasi;
+      "rofi/themes/template/rounded-template.rasi".source =
+        ./rofi-themes-collection/themes/template/rounded-template.rasi;
+
+      "rofi-pass/config".text = ''
+        # Use rofi as the UI
+        ROFI_CMD="rofi -dmenu -i"
+
+        # Clipboard handling on Wayland
+        CLIP_CMD="wl-copy"
+        CLIP_CLEAR_CMD="wl-copy -c"
+
+        # Clear clipboard after N seconds
+        CLIP_TIME=15
+
+        # Type password (Wayland)
+        TYPE_CMD="wtype"
+
+        # Default action:
+        #   - If you want "copy password" by default, keep it like this.
+        # rofi-pass supports multiple actions via keybinds in the menu.
+        DEFAULT_ACTION="copy"
+
+        # Store location (default is ~/.password-store; set only if custom)
+        PASSWORD_STORE_DIR="$HOME/.password-store"
+      '';
+
+      "emacs/init.el".source = ./emacs/init.el;
+    };
+  };
+
   systemd.user.services.rclone-gdrive = {
     Unit = {
       Description = "Rclone mount: Google Drive (config from Secret Service)";
@@ -410,44 +455,4 @@ in
     };
   };
 
-  xdg.configFile."hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
-
-  xdg.configFile."waybar/config".source = ./waybar/config;
-
-  xdg.configFile."waybar/style.css".source = ./waybar/style.css;
-
-  xdg.configFile."wofi/power.sh" = {
-    executable = true;
-    source = ./wofi/power.sh;
-  };
-
-  xdg.configFile."rofi/themes/rounded-nord-dark.rasi".source =
-    ./rofi-themes-collection/themes/rounded-nord-dark.rasi;
-  xdg.configFile."rofi/themes/template/rounded-template.rasi".source =
-    ./rofi-themes-collection/themes/template/rounded-template.rasi;
-
-  xdg.configFile."rofi-pass/config".text = ''
-    # Use rofi as the UI
-    ROFI_CMD="rofi -dmenu -i"
-
-    # Clipboard handling on Wayland
-    CLIP_CMD="wl-copy"
-    CLIP_CLEAR_CMD="wl-copy -c"
-
-    # Clear clipboard after N seconds
-    CLIP_TIME=15
-
-    # Type password (Wayland)
-    TYPE_CMD="wtype"
-
-    # Default action:
-    #   - If you want "copy password" by default, keep it like this.
-    # rofi-pass supports multiple actions via keybinds in the menu.
-    DEFAULT_ACTION="copy"
-
-    # Store location (default is ~/.password-store; set only if custom)
-    PASSWORD_STORE_DIR="$HOME/.password-store"
-  '';
-
-  xdg.configFile."emacs/init.el".source = ./emacs/init.el;
 }
