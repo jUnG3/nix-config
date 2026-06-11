@@ -300,10 +300,41 @@ in
     style.name = "Breeze Dark";
   };
 
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = false; # you said SSH part is already done
-    pinentry.package = pkgs.pinentry-gnome3; # or pinentry-qt / pinentry-curses
+  services = {
+    gpg-agent = {
+      enable = true;
+      enableSshSupport = false; # you said SSH part is already done
+      pinentry.package = pkgs.pinentry-gnome3; # or pinentry-qt / pinentry-curses
+    };
+
+    hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        preload = [
+          "$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
+        ];
+        wallpaper = [
+          ",$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
+        ];
+      };
+    };
+
+    mpd = {
+      enable = true;
+
+      musicDirectory = "/home/junge/Music";
+      extraConfig = ''
+        audio_output {
+          type "pulse"
+          name "My PulseAudio" # this can be whatever you want
+        }
+      '';
+    };
+
+    dunst = {
+      enable = true;
+    };
   };
 
   wayland.windowManager.hyprland = {
@@ -316,35 +347,6 @@ in
         "gsettings set org.gnome.desktop.interface cursor-size 24"
       ];
     };
-  };
-
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      ipc = "on";
-      preload = [
-        "$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
-      ];
-      wallpaper = [
-        ",$HOME/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg"
-      ];
-    };
-  };
-
-  services.mpd = {
-    enable = true;
-
-    musicDirectory = "/home/junge/Music";
-    extraConfig = ''
-      audio_output {
-        type "pulse"
-        name "My PulseAudio" # this can be whatever you want
-      }
-    '';
-  };
-
-  services.dunst = {
-    enable = true;
   };
 
   systemd.user.services.rclone-gdrive = {
