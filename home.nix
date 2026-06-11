@@ -204,6 +204,94 @@ in
         nvim-treesitter.withAllGrammars
       ];
     };
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      oh-my-zsh = {
+        # "ohMyZsh" without Home Manager
+        enable = true;
+        plugins = [
+          "git"
+          "docker"
+        ];
+        theme = "robbyrussell";
+      };
+    };
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      fileWidgetCommand = "fd --type f";
+      fileWidgetOptions = [
+        "--preview 'head {}'"
+      ];
+      historyWidgetOptions = [
+        "--preview 'head {}'"
+      ];
+    };
+
+    rofi = {
+      enable = true;
+      package = pkgs.rofi; # for Hyprland/Wayland
+      theme = "rounded-nord-dark.rasi"; # loads ~/.config/rofi/themes/tokyonight.rasi
+      extraConfig = {
+        modi = "drun,run,window,ssh";
+        show-icons = true;
+      };
+      pass.package = pkgs.rofi-pass;
+    };
+
+    gpg = {
+      enable = true;
+    };
+
+    emacs = {
+      enable = true;
+    };
+
+    kitty = {
+      enable = true;
+      font = {
+        name = "FiraCode Nerd Font";
+        size = 12;
+      };
+      settings = {
+        background_opacity = 0.9;
+      };
+    };
+
+    alacritty = {
+      enable = true;
+      settings = {
+        window.opacity = 0.9;
+        font = {
+          size = 12;
+          normal = {
+            family = "FiraCode Nerd Font";
+            style = "Regular";
+          };
+          italic = {
+            family = "FiraCode Nerd Font";
+            style = "Italic";
+          };
+          bold = {
+            family = "FiraCode Nerd Font";
+            style = "Bold";
+          };
+        };
+      };
+    };
+    ncmpcpp = {
+      enable = true;
+      settings = {
+        mpd_host = "127.0.0.1";
+        mpd_port = "6600";
+        autocenter_mode = "yes";
+        centered_cursor = "yes";
+        user_interface = "alternative";
+      };
+    };
   };
 
   qt = {
@@ -211,47 +299,6 @@ in
     platformTheme.name = "qt5ct";
     style.name = "Breeze Dark";
   };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    oh-my-zsh = {
-      # "ohMyZsh" without Home Manager
-      enable = true;
-      plugins = [
-        "git"
-        "docker"
-      ];
-      theme = "robbyrussell";
-    };
-  };
-
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-    enableBashIntegration = true;
-    fileWidgetCommand = "fd --type f";
-    fileWidgetOptions = [
-      "--preview 'head {}'"
-    ];
-    historyWidgetOptions = [
-      "--preview 'head {}'"
-    ];
-  };
-
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi; # for Hyprland/Wayland
-    theme = "rounded-nord-dark.rasi"; # loads ~/.config/rofi/themes/tokyonight.rasi
-    extraConfig = {
-      modi = "drun,run,window,ssh";
-      show-icons = true;
-    };
-    pass.package = pkgs.rofi-pass;
-  };
-
-  programs.gpg.enable = true;
 
   services.gpg-agent = {
     enable = true;
@@ -268,43 +315,6 @@ in
         "gsettings set org.gnome.desktop.interface cursor-theme ArcStarry"
         "gsettings set org.gnome.desktop.interface cursor-size 24"
       ];
-    };
-  };
-
-  programs.emacs = {
-    enable = true;
-  };
-
-  programs.kitty = {
-    enable = true;
-    font = {
-      name = "FiraCode Nerd Font";
-      size = 12;
-    };
-    settings = {
-      background_opacity = 0.9;
-    };
-  };
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      window.opacity = 0.9;
-      font = {
-        size = 12;
-        normal = {
-          family = "FiraCode Nerd Font";
-          style = "Regular";
-        };
-        italic = {
-          family = "FiraCode Nerd Font";
-          style = "Italic";
-        };
-        bold = {
-          family = "FiraCode Nerd Font";
-          style = "Bold";
-        };
-      };
     };
   };
 
@@ -337,16 +347,6 @@ in
     enable = true;
   };
 
-  programs.ncmpcpp = {
-    enable = true;
-    settings = {
-      mpd_host = "127.0.0.1";
-      mpd_port = "6600";
-      autocenter_mode = "yes";
-      centered_cursor = "yes";
-      user_interface = "alternative";
-    };
-  };
   systemd.user.services.rclone-gdrive = {
     Unit = {
       Description = "Rclone mount: Google Drive (config from Secret Service)";
