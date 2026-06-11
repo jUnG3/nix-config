@@ -14,7 +14,6 @@
   programs = {
     ssh.startAgent = true;
     zsh.enable = true;
-    users.defaultUserShell = pkgs.zsh;
     gamemode = {
       enable = true;
     };
@@ -90,14 +89,16 @@
         "lpadmin"
       ];
     };
+    defaultUserShell = pkgs.zsh;
     mutableUsers = true;
   };
+
+  security.rtkit.enable = true;
 
   services = {
     pulseaudio.enable = false;
     blueman.enable = true;
     openssh.enable = false;
-    rtkit.enable = true;
 
     usbmuxd = {
       enable = true;
