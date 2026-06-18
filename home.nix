@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  unstable,
+  ...
+}:
 
 let
   mountPoint = "${config.home.homeDirectory}/mnt/ivana-slike";
@@ -80,6 +85,7 @@ in
     xorg.libXdamage
     xorg.libXfixes
     xorg.libxcb
+    wl-kbptr
     unrar
     protontricks
     cdrtools
@@ -190,6 +196,7 @@ in
       viAlias = true;
       vimAlias = true;
       defaultEditor = true;
+      package = unstable.neovim.unwrapped;
 
       extraPackages = with pkgs; [
         git
