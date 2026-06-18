@@ -4,7 +4,7 @@
 # be loaded if it exits. Below is the default configuration.
 
 [general]
-home_row_keys=neio
+home_row_keys=neiotsranei
 modes=tile,bisect
 cancellation_status_code=0
 
