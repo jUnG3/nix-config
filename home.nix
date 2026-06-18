@@ -398,7 +398,7 @@ in
       '';
 
       "emacs/init.el".source = ./emacs/init.el;
-      "wl-kbptr/config" = ./wl-kbptr/config;
+      "wl-kbptr/config".source = ./wl-kbptr/config;
     };
   };
 
