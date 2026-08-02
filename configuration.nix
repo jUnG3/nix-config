@@ -139,15 +139,14 @@ in
       '';
     };
 
+    # LazyVim manages all Neovim plugins itself through lazy.nvim.
+    # Do not inject Vim plugins through the NixOS Neovim wrapper.
     neovim = {
       enable = true;
       viAlias = true;
       vimAlias = true;
       defaultEditor = true;
       package = unstable.neovim-unwrapped;
-      configure.packages.home-manager-migration = {
-        start = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
-      };
     };
 
     gnupg.agent = {
