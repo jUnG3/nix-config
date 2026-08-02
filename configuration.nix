@@ -294,6 +294,7 @@ in
 
     systemPackages = with pkgs; [
       vim
+      fzf
       emacs
       git
       wget
