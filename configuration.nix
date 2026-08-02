@@ -307,7 +307,7 @@ in
       rofi
       rofi-pass
       waybar
-      swww
+      awww
       hyprpaper
       hyprlock
       hyprshot
@@ -359,16 +359,16 @@ in
       vulkan-loader
       libGL
       wayland
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXrandr
-      xorg.libXinerama
-      xorg.libXi
-      xorg.libXpresent
-      xorg.libXcomposite
-      xorg.libXdamage
-      xorg.libXfixes
-      xorg.libxcb
+      libx11
+      libxcursor
+      libxrandr
+      libxinerama
+      libxi
+      libxpresent
+      libxcomposite
+      libxdamage
+      libxfixes
+      libxcb
       wl-kbptr
       unrar
       protontricks
@@ -400,7 +400,7 @@ in
       qt6Packages.qt6ct
       kdePackages.breeze
       libsForQt5.qt5ct
-      nixfmt-rfc-style
+      nixfmt
       nixd
       statix
       nixpkgs-fmt
@@ -412,7 +412,7 @@ in
       gnome-themes-extra
       pinentry-gnome3
 
-      wineWow64Packages.unstable
+      wine
       lutris
       winetricks
     ];
