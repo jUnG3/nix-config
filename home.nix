@@ -67,10 +67,6 @@ in
     samba
 
     # support both 32-bit and 64-bit applications
-    wineWow64Packages.full
-    lutris
-    winetricks
-
     vulkan-loader
     libGL
     wayland

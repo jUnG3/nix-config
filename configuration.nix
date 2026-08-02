@@ -176,6 +176,10 @@
     pavucontrol
     pulseaudio
     blueman
+
+    wineWow64Packages.unstable
+    lutris
+    winetricks
   ];
 
   nixpkgs.config.allowUnfree = true;
