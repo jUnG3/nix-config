@@ -325,6 +325,8 @@ in
       libreoffice-still
       audacity
       ffmpeg-full
+      satty
+      grim
 
       gcc
       clang-tools
