@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ config, pkgs, unstable ... }:
 
 let
   username = "junge";
@@ -183,8 +183,16 @@ in
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelParams = [ "amd_pstate=active" ];
-    initrd.kernelModules = [ "amdgpu" ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      yt6801
+    ];
+    kernelParams = [
+      "amd_pstate=active"
+      "yt6801"
+    ];
+    initrd = {
+      kernelModules = [ "amdgpu" ];
+    };
   };
 
   hardware = {
@@ -235,6 +243,60 @@ in
     xserver = {
       enable = false;
       videoDrivers = [ "amdgpu" ];
+      xkb = {
+        model = "pc105";
+        layout = "tuxedo_colemak_ansi";
+        variant = "basic";
+
+        extraLayouts.tuxedo_colemak_ansi = {
+          description = "TUXEDO PR 106 Laser Colemak-DH ANSI";
+          languages = [ "eng" ];
+          symbolsFile = pkgs.writeText "tuxedo_colemak_ansi" ''
+            partial alphanumeric_keys
+            xkb_symbols "basic" {
+              include "us(basic)"
+              name[Group1] = "TUXEDO PR 106 Laser Colemak-DH ANSI";
+
+              key <AD01> { [ q, Q ] };
+              key <AD02> { [ w, W ] };
+              key <AD03> { [ f, F ] };
+              key <AD04> { [ p, P ] };
+              key <AD05> { [ b, B ] };
+              key <AD06> { [ j, J ] };
+              key <AD07> { [ l, L ] };
+              key <AD08> { [ u, U ] };
+              key <AD09> { [ y, Y ] };
+              key <AD10> { [ apostrophe, quotedbl ] };
+              key <AD11> { [ bracketleft, braceleft ] };
+              key <AD12> { [ bracketright, braceright ] };
+              key <BKSL> { [ backslash, bar ] };
+
+              key <AC01> { [ a, A ] };
+              key <AC02> { [ r, R ] };
+              key <AC03> { [ s, S ] };
+              key <AC04> { [ t, T ] };
+              key <AC05> { [ g, G ] };
+              key <AC06> { [ m, M ] };
+              key <AC07> { [ n, N ] };
+              key <AC08> { [ e, E ] };
+              key <AC09> { [ i, I ] };
+              key <AC10> { [ o, O ] };
+              key <AC11> { [ semicolon, colon ] };
+
+              key <AB01> { [ z, Z ] };
+              key <AB02> { [ x, X ] };
+              key <AB03> { [ c, C ] };
+              key <AB04> { [ d, D ] };
+              key <AB05> { [ v, V ] };
+              key <AB06> { [ k, K ] };
+              key <AB07> { [ h, H ] };
+              key <AB08> { [ comma, less ] };
+              key <AB09> { [ period, greater ] };
+              key <AB10> { [ slash, question ] };
+            };
+          '';
+        };
+      };
     };
 
     pipewire = {
@@ -282,6 +344,11 @@ in
         "org.freedesktop.impl.portal.Screenshot" = [ "hyprland" ];
       };
     };
+  };
+
+  console = {
+    earlySetup = true;
+    useXkbConfig = true;
   };
 
   fonts = {
