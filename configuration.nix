@@ -327,6 +327,7 @@ in
       ffmpeg-full
       satty
       grim
+      gpclient
 
       gcc
       clang-tools
