@@ -169,6 +169,9 @@ in
       enable = true;
       withUWSM = true;
     };
+    light = {
+      enable = true;
+    };
   };
 
   time.timeZone = "Europe/Zagreb";
@@ -186,6 +189,7 @@ in
     extraModulePackages = with config.boot.kernelPackages; [
       yt6801
     ];
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "amd_pstate=active"
       "yt6801"
