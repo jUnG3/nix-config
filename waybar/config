@@ -5,20 +5,20 @@
   "expand-center": true,
   "spacing": 4,
   "modules-left": [
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "hyprland/submap"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
-    "mpd",
-    "cpu",
-    "temperature",
-    "battery",
-    "memory",
-    "network",
-    "bluetooth",
     "pulseaudio",
+    "battery",
+    "bluetooth",
+    "network",
+    "cpu",
+    "memory",
+    "mpd",
     "custom/power",
     "tray"
   ],
