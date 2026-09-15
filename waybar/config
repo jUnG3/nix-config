@@ -12,13 +12,6 @@
     "clock"
   ],
   "modules-right": [
-    "mpd",
-    "cpu",
-    "temperature",
-    "battery",
-    "memory",
-    "network",
-    "bluetooth",
     "pulseaudio",
     "battery",
     "bluetooth",
