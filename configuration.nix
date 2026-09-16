@@ -1,4 +1,4 @@
-{ config, pkgs, unstable ... }:
+{ config, pkgs, unstable, ... }:
 
 let
   username = "junge";
@@ -168,9 +168,6 @@ in
     hyprland = {
       enable = true;
       withUWSM = true;
-    };
-    light = {
-      enable = true;
     };
   };
 
@@ -409,6 +406,7 @@ in
       satty
       grim
       gpclient
+      brightnessctl
 
       gcc
       clang-tools
