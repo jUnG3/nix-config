@@ -413,6 +413,7 @@ in
       grim
       gpclient
       gnutar
+      brightnessctl
 
       gcc
       clang-tools
