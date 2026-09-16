@@ -97,6 +97,14 @@ in
       enable = true;
       withUWSM = true;
     };
+
+    git = {
+      enable = true;
+      package = pkgs.git.override { withLibsecret = true; };
+      config = {
+        credential.helper = "libsecret";
+      };
+    };
   };
 
   time.timeZone = "Europe/Zagreb";
