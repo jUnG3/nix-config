@@ -10,50 +10,6 @@ let
   homeDirectory = "/home/${username}";
   mountPoint = "${homeDirectory}/mnt/ivana-slike";
 
-  rofiPassConfig = pkgs.writeText "rofi-pass-config" ''
-    ROFI_CMD="rofi -dmenu -i"
-    CLIP_CMD="wl-copy"
-    CLIP_CLEAR_CMD="wl-copy -c"
-    CLIP_TIME=15
-    TYPE_CMD="wtype"
-    DEFAULT_ACTION="copy"
-    PASSWORD_STORE_DIR="$HOME/.password-store"
-  '';
-
-  alacrittyConfig = pkgs.writeText "alacritty.toml" ''
-    [window]
-    opacity = 0.9
-
-    [font]
-    size = 12
-
-    [font.normal]
-    family = "FiraCode Nerd Font"
-    style = "Regular"
-
-    [font.italic]
-    family = "FiraCode Nerd Font"
-    style = "Italic"
-
-    [font.bold]
-    family = "FiraCode Nerd Font"
-    style = "Bold"
-  '';
-
-  kittyConfig = pkgs.writeText "kitty.conf" ''
-    font_family FiraCode Nerd Font
-    font_size 12
-    background_opacity 0.9
-  '';
-
-  ncmpcppConfig = pkgs.writeText "ncmpcpp-config" ''
-    mpd_host = "127.0.0.1"
-    mpd_port = "6600"
-    autocenter_mode = "yes"
-    centered_cursor = "yes"
-    user_interface = "alternative"
-  '';
-
   mpdConfig = pkgs.writeText "mpd.conf" ''
     music_directory "${homeDirectory}/Music"
     playlist_directory "${homeDirectory}/.local/share/mpd/playlists"
@@ -68,39 +24,6 @@ let
       type "pulse"
       name "My PulseAudio"
     }
-  '';
-
-  mimeApps = pkgs.writeText "mimeapps.list" ''
-    [Added Associations]
-    application/pdf=org.kde.okular.desktop;
-
-    [Default Applications]
-    application/pdf=org.kde.okular.desktop;
-    image/jpeg=imv.desktop;
-    image/png=imv.desktop;
-    image/webp=imv.desktop;
-  '';
-
-  gtk3Settings = pkgs.writeText "gtk3-settings.ini" ''
-    [Settings]
-    gtk-theme-name=Adwaita-dark
-    gtk-application-prefer-dark-theme=1
-  '';
-
-  gtk4Settings = pkgs.writeText "gtk4-settings.ini" ''
-    [Settings]
-    gtk-theme-name=Adwaita-dark
-    gtk-application-prefer-dark-theme=1
-  '';
-
-  qt5ctConfig = pkgs.writeText "qt5ct.conf" ''
-    [Appearance]
-    style=Breeze
-  '';
-
-  qt6ctConfig = pkgs.writeText "qt6ct.conf" ''
-    [Appearance]
-    style=Breeze
   '';
 
   hyprpaperConfig = pkgs.writeText "hyprpaper.conf" ''
@@ -436,46 +359,6 @@ in
     ];
   };
 
-  # Home Manager used to create these files. NixOS tmpfiles now installs
-  # equivalent symlinks into junge's home directory.
-  systemd.tmpfiles.rules = [
-    "d ${homeDirectory}/.config 0755 ${username} users -"
-    "d ${homeDirectory}/.config/hypr 0755 ${username} users -"
-    "d ${homeDirectory}/.config/waybar 0755 ${username} users -"
-    "d ${homeDirectory}/.config/wofi 0755 ${username} users -"
-    "d ${homeDirectory}/.config/rofi/themes/template 0755 ${username} users -"
-    "d ${homeDirectory}/.config/rofi-pass 0755 ${username} users -"
-    "d ${homeDirectory}/.config/emacs 0755 ${username} users -"
-    "d ${homeDirectory}/.config/wl-kbptr 0755 ${username} users -"
-    "d ${homeDirectory}/.config/alacritty 0755 ${username} users -"
-    "d ${homeDirectory}/.config/kitty 0755 ${username} users -"
-    "d ${homeDirectory}/.config/ncmpcpp 0755 ${username} users -"
-    "d ${homeDirectory}/.config/gtk-3.0 0755 ${username} users -"
-    "d ${homeDirectory}/.config/gtk-4.0 0755 ${username} users -"
-    "d ${homeDirectory}/.config/qt5ct 0755 ${username} users -"
-    "d ${homeDirectory}/.config/qt6ct 0755 ${username} users -"
-    "d ${homeDirectory}/.local/share/mpd/playlists 0755 ${username} users -"
-    "d ${mountPoint} 0700 ${username} users -"
-
-    "L+ ${homeDirectory}/.config/hypr/hyprland.conf - - - - ${./hyprland/hyprland.conf}"
-    "L+ ${homeDirectory}/.config/waybar/config - - - - ${./waybar/config}"
-    "L+ ${homeDirectory}/.config/waybar/style.css - - - - ${./waybar/style.css}"
-    "L+ ${homeDirectory}/.config/wofi/power.sh - - - - ${./wofi/power.sh}"
-    "L+ ${homeDirectory}/.config/rofi/themes/rounded-nord-dark.rasi - - - - ${./rofi-themes-collection/themes/rounded-nord-dark.rasi}"
-    "L+ ${homeDirectory}/.config/rofi/themes/template/rounded-template.rasi - - - - ${./rofi-themes-collection/themes/template/rounded-template.rasi}"
-    "L+ ${homeDirectory}/.config/rofi-pass/config - - - - ${rofiPassConfig}"
-    "L+ ${homeDirectory}/.config/emacs/init.el - - - - ${./emacs/init.el}"
-    "L+ ${homeDirectory}/.config/wl-kbptr/config - - - - ${./wl-kbptr/config}"
-    "L+ ${homeDirectory}/.config/alacritty/alacritty.toml - - - - ${alacrittyConfig}"
-    "L+ ${homeDirectory}/.config/kitty/kitty.conf - - - - ${kittyConfig}"
-    "L+ ${homeDirectory}/.config/ncmpcpp/config - - - - ${ncmpcppConfig}"
-    "L+ ${homeDirectory}/.config/mimeapps.list - - - - ${mimeApps}"
-    "L+ ${homeDirectory}/.config/gtk-3.0/settings.ini - - - - ${gtk3Settings}"
-    "L+ ${homeDirectory}/.config/gtk-4.0/settings.ini - - - - ${gtk4Settings}"
-    "L+ ${homeDirectory}/.config/qt5ct/qt5ct.conf - - - - ${qt5ctConfig}"
-    "L+ ${homeDirectory}/.config/qt6ct/qt6ct.conf - - - - ${qt6ctConfig}"
-  ];
-
   systemd.user.services = {
     desktop-preferences = {
       description = "Apply GTK and cursor preferences";
@@ -519,6 +402,11 @@ in
       description = "Music Player Daemon";
       wantedBy = [ "default.target" ];
       serviceConfig = {
+        ExecStartPre = pkgs.writeShellScript "prepare-mpd-directories" ''
+          mkdir -p \
+            ${homeDirectory}/.local/share/mpd/playlists \
+            ${homeDirectory}/Music
+        '';
         ExecStart = "${pkgs.mpd}/bin/mpd --no-daemon ${mpdConfig}";
         Restart = "on-failure";
       };
