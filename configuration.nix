@@ -1,4 +1,9 @@
-{ config, pkgs, unstable, ... }:
+{
+  config,
+  pkgs,
+  unstable,
+  ...
+}:
 
 let
   username = "junge";
@@ -312,7 +317,7 @@ in
     greetd = {
       enable = true;
       settings.default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
         user = "greeter";
       };
     };
@@ -335,7 +340,7 @@ in
       pkgs.xdg-desktop-portal-gtk
     ];
     config = {
-      common = {
+      Hyprland = {
         default = [
           "hyprland"
           "gtk"
