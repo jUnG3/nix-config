@@ -294,6 +294,14 @@ in
       enable = true;
       nssmdns4 = true;
     };
+
+    ollama = {
+      enable = true;
+      loadModels = [
+        "qwen3-coder:30b"
+        "llama3.1:8b"
+      ];
+    };
   };
 
   virtualisation = {
@@ -499,6 +507,7 @@ in
       nixpkgs-fmt
 
       slack
+      llm
       pavucontrol
       pulseaudio
       blueman
