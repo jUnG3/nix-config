@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     opencode.url = "github:anomalyco/opencode/v2.1.2";
+    nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };
 
   outputs =
@@ -12,6 +13,7 @@
       nixpkgs,
       nixpkgs-unstable,
       opencode,
+      nix-amd-ai,
       ...
     }:
     let
@@ -31,6 +33,7 @@
         modules = [
           /etc/nixos/hardware-configuration.nix
           ./configuration.nix
+          nix-amd-ai.nixosModules.default
         ];
       };
     };
