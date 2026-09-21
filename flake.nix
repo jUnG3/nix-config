@@ -4,10 +4,16 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-amd-ai.url = "github:noamsto/nix-amd-ai";
   };
 
   outputs =
-    { nixpkgs, nixpkgs-unstable, ... }:
+    {
+      nixpkgs,
+      nixpkgs-unstable,
+      nix-amd-ai,
+      ...
+    }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs-unstable {
@@ -22,6 +28,7 @@
         modules = [
           /etc/nixos/hardware-configuration.nix
           ./configuration.nix
+          nix-amd-ai.nixosModules.default
         ];
       };
     };

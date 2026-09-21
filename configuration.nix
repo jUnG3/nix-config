@@ -217,6 +217,18 @@ in
       powerOnBoot = true;
       settings.General.Experimental = true;
     };
+    amd-npu = {
+      enable = true;
+      enableNPU = true; # default; set false for GPU-only hosts (see "Other hardware")
+      enableFastFlowLM = true; # LLM inference on NPU (requires enableNPU)
+      enableLemonade = true; # OpenAI-compatible API server
+      enableROCm = true; # ROCm GPU backends (llamacpp + sd-cpp)
+      enableVulkan = true; # Vulkan GPU backends (llamacpp + whispercpp)
+      enableImageGen = true; # default true; set false to drop sd-cpp from closure
+      lemonade = {
+        user = "junge";
+      };
+    };
   };
 
   powerManagement.cpuFreqGovernor = "schedutil";
@@ -232,13 +244,16 @@ in
         "input"
         "scanner"
         "lpadmin"
+        "render"
       ];
     };
     defaultUserShell = pkgs.zsh;
     mutableUsers = true;
   };
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+  };
 
   services = {
     pulseaudio.enable = false;
@@ -501,7 +516,9 @@ in
       nixpkgs-fmt
 
       slack
-      llm
+      (llm.withPlugins {
+        llm-ollama = true;
+      })
       pavucontrol
       pulseaudio
       blueman
