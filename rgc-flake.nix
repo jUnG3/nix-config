@@ -11,14 +11,14 @@
       let
         pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
 
-        # Fetch RGC from GitHub using git fetcher for better reproducibility
+        # Fetch RGC from GitHub - update owner/repo and sha256 as needed
         rgc = pkgs.stdenv.mkDerivation {
           name = "ranked-gaming-client";
           src = pkgs.fetchFromGitHub {
             owner = "rgc-project";
             repo = "RGC";
             rev = "master";
-            sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Replace with actual hash after fetching
+            sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Replace with actual hash
           };
 
           nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -40,8 +40,8 @@
         };
 
       in {
-        packages.rgc = rgc;
-        defaultPackage = rgc;
+        packages.x86_64-linux.rgc = rgc;
+        defaultPackage.x86_64-linux = rgc;
       }
     );
 }
