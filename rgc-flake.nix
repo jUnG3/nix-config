@@ -1,5 +1,4 @@
-{ lib, config, pkgs, ... }: {
-
+{
   description = "Ranked Gaming Client (RGC) Flake";
 
   inputs = {
@@ -19,7 +18,7 @@
             owner = "rgc-project";
             repo = "RGC";
             rev = "master";
-            sha256 = "placeholder-for-actual-sha256-hash"; # Replace with actual hash after fetching
+            sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Replace with actual hash
           };
 
           nativeBuildInputs = [ pkgs.makeWrapper ];
