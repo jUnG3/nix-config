@@ -18,7 +18,7 @@
             owner = "rgc-project";
             repo = "RGC";
             rev = "master";
-            sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Replace with actual hash
+            sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Replace with actual hash after fetching
           };
 
           nativeBuildInputs = [ pkgs.makeWrapper ];
