@@ -529,6 +529,7 @@ in
       lutris
       winetricks
       nvtopPackages.amd
+      opencode
       playwright
     ];
   };
