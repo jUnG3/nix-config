@@ -375,6 +375,9 @@ in
       wine
       lutris
       winetricks
+      nvtopPackages.amd
+      opencode
+      playwright
     ];
   };
 
