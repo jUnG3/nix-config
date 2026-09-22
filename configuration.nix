@@ -528,6 +528,8 @@ in
       wine
       lutris
       winetricks
+      nvtopPackages.amd
+      playwright
     ];
   };
 
