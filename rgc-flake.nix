@@ -16,7 +16,7 @@
           name = "ranked-gaming-client";
           src = pkgs.fetchurl {
             url = "https://rankedgaming.com/api/updates/download-client?v=0.1.115";
-            sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Replace with actual hash
+            sha256 = "1zwjzx3l81wpyr4wjqkc6gkh67x7n90m0ms47vbwlrnx8m2h09wn";
           };
 
           nativeBuildInputs = [ pkgs.makeWrapper pkgs.unzip ];
@@ -35,7 +35,7 @@
             # Extract the installer zip
             unzip -q $src -d $out/extracted
             
-            # Run the installer with Wine
+            # Run the installer with Wine (silent mode)
             cd $out/extracted
             wine RGC-Setup.exe /S
             
