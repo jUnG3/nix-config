@@ -19,9 +19,9 @@
             sha256 = "1zwjzx3l81wpyr4wjqkc6gkh67x7n90m0ms47vbwlrnx8m2h09wn";
           };
 
-          nativeBuildInputs = [ pkgs.makeWrapper pkgs.unzip ];
+          nativeBuildInputs = [ pkgs.makeWrapper pkgs.unzip pkgs.wine ];
 
-          buildInputs = [ pkgs.wine pkgs.wineWowPackages.stable ];
+          buildInputs = [ pkgs.wineWowPackages.stable ];
 
           installPhase = ''
             runHook preInstall
@@ -35,13 +35,21 @@
             # Extract the installer zip
             unzip -q $src -d $out/extracted
             
+            # List contents to find the actual installer
+            ls -la $out/extracted
+            
             # Run the installer with Wine (silent mode)
             cd $out/extracted
-            wine RGC-Setup.exe /S
+            wine RGC-Setup.exe /S || wine RGC-Setup.exe /verysilent || wine RGC-Setup.exe /silent
             
             # Find and wrap the installed executable
             mkdir -p $out/bin
             cp -r $out/extracted/RGC* $out/bin/ 2>/dev/null || true
+            
+            # If no RGC* found, try to find any .exe in extracted
+            if [ ! -d "$out/bin/RGC" ]; then
+              find $out/extracted -name "*.exe" -type f | head -1 | xargs -I {} cp {} $out/bin/ 2>/dev/null || true
+            fi
             
             # Wrap the executable to ensure Wine is in PATH
             wrapProgram $out/bin/RGC.exe \
@@ -54,8 +62,8 @@
         };
 
       in {
-        packages.x86_64-linux.rgc = rgc;
-        defaultPackage.x86_64-linux = rgc;
+        packages.rgc = rgc;
+        defaultPackage = rgc;
       }
     );
 }
