@@ -572,6 +572,7 @@ in
     "L+ ${homeDirectory}/.config/gtk-4.0/settings.ini - - - - ${gtk4Settings}"
     "L+ ${homeDirectory}/.config/qt5ct/qt5ct.conf - - - - ${qt5ctConfig}"
     "L+ ${homeDirectory}/.config/qt6ct/qt6ct.conf - - - - ${qt6ctConfig}"
+    "L+ /bin/bash - - - - ${pkgs.bash}/bin/bash"
   ];
 
   systemd.user.services = {
