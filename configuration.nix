@@ -224,11 +224,11 @@ in
       enableLemonade = true; # OpenAI-compatible API server
       enableROCm = true; # ROCm GPU backends (llamacpp + sd-cpp)
       enableVulkan = true; # Vulkan GPU backends (llamacpp + whispercpp)
-       enableImageGen = true; # default true; set false to drop sd-cpp from closure
-       lemonade = {
-         user = "junge";
-         models = [ "Flux-2-Klein-4B" ];
-       };
+      enableImageGen = true; # default true; set false to drop sd-cpp from closure
+      lemonade = {
+        user = "junge";
+        models = [ "Flux-2-Klein-4B" ];
+      };
     };
   };
 
@@ -532,6 +532,10 @@ in
       nvtopPackages.amd
       opencode
       playwright
+
+      dotnet-sdk_10
+      dotnet-runtime_10
+      dotnet-aspnetcore_10
     ];
   };
 
