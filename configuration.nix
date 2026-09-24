@@ -227,7 +227,12 @@ in
       enableImageGen = true; # default true; set false to drop sd-cpp from closure
       lemonade = {
         user = "junge";
-        models = [ "Flux-2-Klein-4B" ];
+        models = [
+          "Flux-2-Klein-4B"
+          "gpt-oss-20b-FLM"
+          "Qwen3.5-35B-A3B-GGUF"
+          "qwen3.5-9b-FLM"
+        ];
       };
     };
   };
