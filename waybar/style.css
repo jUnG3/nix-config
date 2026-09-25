@@ -42,7 +42,8 @@ window#waybar {
 #cpu,
 #memory,
 #mpd,
-#custom-power
+#custom-power,
+#pulseaudio
 {
   border-radius: 8px;
   padding: 5px 8px;
