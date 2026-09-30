@@ -251,3 +251,11 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("mpc prev"), { locked = true })
 
 -- The original window-rule examples were commented out, so no active window
 -- rules are added here. Native 0.55.4 rules use hl.window_rule({...}).
+
+hl.window_rule({
+  name = "modal-to-tile",
+  match = {
+    class = "(soffice|xdg-desktop-portal-gtk)"
+  },
+  tile = true
+})
