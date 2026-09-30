@@ -249,6 +249,10 @@ in
       QT_QPA_PLATFORMTHEME = "qt5ct";
     };
 
+    etc = {
+      "hypr".source = ./hyprland;
+    };
+
     systemPackages = with pkgs; [
       vim
       fzf
