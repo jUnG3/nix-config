@@ -1,14 +1,13 @@
--- Hyprland configuration in Lua format for version 0.55.0
+-- hl.configuration in Lua format for version 0.55.0
 
 -- Monitor configuration
-hyprland.monitor({
-	name = "DP-1",
-	resolution = "3840x2160@144",
-	position = "1440x0",
+hl.monitor({
+  output = "desc:",
+	resolution = "3840x2160@144", position = "1440x0",
 	scale = 1,
 })
 
-hyprland.monitor({
+hl.monitor({
 	name = "DP-2",
 	resolution = "2560x1440@144",
 	position = "0x0",
@@ -16,14 +15,14 @@ hyprland.monitor({
 	transform = 3,
 })
 
-hyprland.monitor({
+hl.monitor({
 	name = "HDMI-A-1",
 	resolution = "2560x1440@60",
 	position = "0x0",
 	scale = 1,
 })
 
-hyprland.monitor({
+hl.monitor({
 	name = "eDP-1",
 	resolution = "preferred",
 	position = "2560x0",
@@ -31,28 +30,28 @@ hyprland.monitor({
 })
 
 -- Environment variables
-hyprland.env({
+hl.env({
 	name = "HYPRCURSOR_THEME",
 	value = "ArcStarry",
 })
 
-hyprland.env({
+hl.env({
 	name = "HYPRCURSOR_SIZE",
 	value = "24",
 })
 
-hyprland.env({
+hl.env({
 	name = "XCURSOR_THEME",
 	value = "ArcStarry",
 })
 
-hyprland.env({
+hl.env({
 	name = "XCURSOR_SIZE",
 	value = "24",
 })
 
 -- General settings
-hyprland.general({
+hl.general({
 	gaps_in = 5,
 	gaps_out = 20,
 	border_size = 2,
@@ -64,7 +63,7 @@ hyprland.general({
 })
 
 -- Decoration settings
-hyprland.decoration({
+hl.decoration({
 	rounding = 10,
 	rounding_power = 2,
 	active_opacity = 1.0,
@@ -84,7 +83,7 @@ hyprland.decoration({
 })
 
 -- Animations
-hyprland.animations({
+hl.animations({
 	enabled = true,
 	bezier = {
 		easeOutQuint = { 0.23, 1, 0.32, 1 },
@@ -114,23 +113,23 @@ hyprland.animations({
 })
 
 -- Dwindle layout settings
-hyprland.dwindle({
+hl.dwindle({
 	preserve_split = true,
 })
 
 -- Master layout settings
-hyprland.master({
+hl.master({
 	new_status = "master",
 })
 
 -- Misc settings
-hyprland.misc({
+hl.misc({
 	force_default_wallpaper = -1,
-	disable_hyprland_logo = false,
+	disable_hl.logo = false,
 })
 
 -- Input settings
-hyprland.input({
+hl.input({
 	kb_layout = "us",
 	kb_variant = "basic",
 	kb_model = "pc105",
@@ -145,12 +144,12 @@ hyprland.input({
 })
 
 -- Device-specific input settings
-hyprland.device({
+hl.device({
 	name = "epic-mouse-v1",
 	sensitivity = -0.5,
 })
 
-hyprland.device({
+hl.device({
 	name = "at-translated-set-2-keyboard",
 	kb_layout = "tuxedo_colemak_ansi",
 	kb_variant = "basic",
@@ -162,99 +161,99 @@ hyprland.device({
 local mod = "SUPER"
 
 -- Basic commands
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "Return",
 	command = "exec, $terminal",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "Q",
 	command = "killactive,",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "M",
 	command = "exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "E",
 	command = "exec, $fileManager",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "V",
 	command = "togglefloating,",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "D",
 	command = "exec, $menu",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "P",
 	command = "pseudo, # dwindle",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "F",
 	command = "fullscreen",
 })
 
 -- Move focus with arrow keys
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "left",
 	command = "movefocus, l",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "right",
 	command = "movefocus, r",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "up",
 	command = "movefocus, u",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "down",
 	command = "movefocus, d",
 })
 
 -- Move windows around
-hyprland.bind({
+hl.bind({
 	mod = mod .. "Shift",
 	key = "left",
 	command = "movewindow, l",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod .. "Shift",
 	key = "right",
 	command = "movewindow, r",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod .. "Shift",
 	key = "up",
 	command = "movewindow, u",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod .. "Shift",
 	key = "down",
 	command = "movewindow, d",
@@ -262,13 +261,13 @@ hyprland.bind({
 
 -- Switch workspaces
 for i = 1, 10 do
-	hyprland.bind({
+	hl.bind({
 		mod = mod,
 		key = tostring(i),
 		command = "workspace, " .. tostring(i),
 	})
 
-	hyprland.bind({
+	hl.bind({
 		mod = mod .. "Shift",
 		key = tostring(i),
 		command = "movetoworkspace, " .. tostring(i),
@@ -276,111 +275,111 @@ for i = 1, 10 do
 end
 
 -- Special workspace
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "S",
 	command = "togglespecialworkspace, magic",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod .. "Shift",
 	key = "S",
 	command = "movetoworkspace, special:magic",
 })
 
 -- Scroll through workspaces
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "mouse_down",
 	command = "workspace, e+1",
 })
 
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "mouse_up",
 	command = "workspace, e-1",
 })
 
 -- Move/resize windows with mouse
-hyprland.bindm({
+hl.bindm({
 	mod = mod,
 	mouse = "272",
 	command = "movewindow",
 })
 
-hyprland.bindm({
+hl.bindm({
 	mod = mod,
 	mouse = "273",
 	command = "resizewindow",
 })
 
 -- Use mouse pointer
-hyprland.bind({
+hl.bind({
 	mod = mod,
 	key = "g",
 	command = "exec, wl-kbptr",
 })
 
 -- Multimedia keys
-hyprland.bindl({
+hl.bindl({
 	key = "XF86AudioRaiseVolume",
 	command = "exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
 })
 
-hyprland.bindl({
+hl.bindl({
 	key = "XF86AudioLowerVolume",
 	command = "exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
 })
 
-hyprland.bindl({
+hl.bindl({
 	key = "XF86AudioMute",
 	command = "exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
 })
 
-hyprland.bindl({
+hl.bindl({
 	key = "XF86AudioMicMute",
 	command = "exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
 })
 
-hyprland.bindl({
+hl.bindl({
 	key = "XF86MonBrightnessUp",
 	command = "exec, brightnessctl -e4 -n2 set 5%+",
 })
 
-hyprland.bindl({
+hl.bindl({
 	key = "XF86MonBrightnessDown",
 	command = "exec, brightnessctl -e4 -n2 set 5%-",
 })
 
 -- Playerctl commands
-hyprland.bindl({
+hl.bindl({
 	key = "XF86AudioNext",
 	command = "exec, mpc next",
 })
 
-hyprland.bindl({
+hl.bindl({
 	key = "XF86AudioPause",
 	command = "exec, mpc toggle",
 })
 
-hyprland.bindl({
+hl.bindl({
 	key = "XF86AudioPlay",
 	command = "exec, mpc toggle",
 })
 
-hyprland.bindl({
+hl.bindl({
 	key = "XF86AudioPrev",
 	command = "exec, mpc prev",
 })
 
 -- Window rules
-hyprland.windowrulev2({
+hl.windowrulev2({
 	name = "suppress-maximize-events",
 	match = { class = ".*" },
 	suppress_event = "maximize",
 })
 
-hyprland.windowrulev2({
+hl.windowrulev2({
 	name = "fix-xwayland-drags",
 	match = {
 		class = "^$",
@@ -393,22 +392,22 @@ hyprland.windowrulev2({
 	no_focus = true,
 })
 
-hyprland.windowrulev2({
-	name = "move-hyprland-run",
-	match = { class = "hyprland-run" },
+hl.windowrulev2({
+	name = "move-hl.run",
+	match = { class = "hl.run" },
 	move = "20 monitor_h-120",
 	float = true,
 })
 
 -- Autostart
-hyprland.exec_once({
+hl.exec_once({
 	command = "waybar",
 })
 
-hyprland.exec_once({
-	command = "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE XDG_RUNTIME_DIR",
+hl.exec_once({
+	command = "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP hl.INSTANCE_SIGNATURE XDG_RUNTIME_DIR",
 })
 
-hyprland.exec_once({
+hl.exec_once({
 	command = "systemctl --user start hyprpaper",
 })
