@@ -29,11 +29,18 @@ let
 
   hyprpaperConfig = pkgs.writeText "hyprpaper.conf" ''
     ipc = on
-    preload = ${wallpapers.devotion}
-    preload = ${wallpapers.queenOfHeavenAndEarth}
 
-    wallpaper = DP-1,${wallpapers.devotion}
-    wallpaper = DP-2,${wallpapers.queenOfHeavenAndEarth}
+    wallpaper {
+      monitor = DP-1
+      path = ${wallpapers.devotion}
+      fit_mode = cover
+    }
+
+    wallpaper {
+      monitor = DP-2
+      path = ${wallpapers.queenOfHeavenAndEarth}
+      fit_mode = cover
+    }
   '';
 in
 {
