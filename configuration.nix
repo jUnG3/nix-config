@@ -453,51 +453,6 @@ in
         Restart = "on-failure";
       };
     };
-
-    rclone-gdrive = {
-      description = "Rclone mount: Google Drive (config from Secret Service)";
-      wantedBy = [ "default.target" ];
-      after = [ "network-online.target" ];
-      wants = [ "network-online.target" ];
-
-      serviceConfig = {
-        Type = "simple";
-        ExecStartPre = pkgs.writeShellScript "rclone-secret-prep" ''
-          set -euo pipefail
-          umask 077
-
-          runtime_dir="$XDG_RUNTIME_DIR/rclone"
-          runtime_conf="$runtime_dir/rclone.conf"
-
-          mkdir -p "$runtime_dir" "${mountPoint}"
-          chmod 700 "$runtime_dir" "${mountPoint}"
-
-          conf="$(${pkgs.libsecret}/bin/secret-tool lookup service rclone name ivana-photos-conf 2>/dev/null || true)"
-          if [ -z "$conf" ]; then
-            echo "ERROR: Could not retrieve secret (service=rclone name=ivana-photos-conf)."
-            echo "Check: KeePassXC running + DB unlocked + Secret Service enabled."
-            exit 1
-          fi
-
-          printf "%s\n" "$conf" > "$runtime_conf"
-          chmod 600 "$runtime_conf"
-        '';
-        ExecStart = pkgs.writeShellScript "rclone-mount-gdrive" ''
-          set -euo pipefail
-          runtime_conf="$XDG_RUNTIME_DIR/rclone/rclone.conf"
-
-          exec ${pkgs.rclone}/bin/rclone mount ivana-photos: ${mountPoint} \
-            --config "$runtime_conf" \
-            --vfs-cache-mode writes \
-            --dir-cache-time 72h \
-            --poll-interval 1m \
-            --umask 077
-        '';
-        ExecStop = "${pkgs.fuse3}/bin/fusermount3 -u ${mountPoint}";
-        Restart = "on-failure";
-        RestartSec = 3;
-      };
-    };
   };
 
   nixpkgs.config.allowUnfree = true;
