@@ -9,6 +9,7 @@ let
   username = "junge";
   homeDirectory = "/home/${username}";
   mountPoint = "${homeDirectory}/mnt/ivana-slike";
+  wallpapers = import ./wallpapers.nix { inherit pkgs; };
 
   mpdConfig = pkgs.writeText "mpd.conf" ''
     music_directory "${homeDirectory}/Music"
@@ -28,8 +29,11 @@ let
 
   hyprpaperConfig = pkgs.writeText "hyprpaper.conf" ''
     ipc = on
-    preload = ${homeDirectory}/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg
-    wallpaper = ,${homeDirectory}/Pictures/wallpapers/jacob-bentzinger-OrovnGeyG-A-unsplash.jpg
+    preload = ${wallpapers.devotion}
+    preload = ${wallpapers.queenOfHeavenAndEarth}
+
+    wallpaper = DP-1,${wallpapers.devotion}
+    wallpaper = DP-2,${wallpapers.queenOfHeavenAndEarth}
   '';
 in
 {
@@ -63,7 +67,7 @@ in
         source ${pkgs.fzf}/share/fzf/key-bindings.zsh
         export FZF_CTRL_T_COMMAND='fd --type f'
         export FZF_CTRL_T_OPTS="--preview 'head {}'"
-        export FZF_CTRL_R_OPTS="--preview 'head {}'"
+        export FZF_CTRL_R_OPTS=""
       '';
     };
 
