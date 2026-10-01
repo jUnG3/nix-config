@@ -249,6 +249,10 @@ in
       QT_QPA_PLATFORMTHEME = "qt5ct";
     };
 
+    sessionVariables = {
+      HYPRLAND_CONFIG = "/etc/${config.environment.etc."hypr".target}/hyprland.lua";
+    };
+
     etc = {
       "hypr".source = ./hyprland;
     };

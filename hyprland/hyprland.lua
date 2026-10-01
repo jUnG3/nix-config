@@ -85,6 +85,7 @@ hl.config({
 	},
 
 	dwindle = {
+		force_split = 2,
 		preserve_split = true,
 	},
 
@@ -239,9 +240,17 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("mpc prev"), { locked = true })
 -- rules are added here. Native 0.55.4 rules use hl.window_rule({...}).
 
 hl.window_rule({
-  name = "modal-to-tile",
-  match = {
-    class = "(soffice|xdg-desktop-portal-gtk)"
-  },
-  tile = true
+	name = "modal-to-tile",
+	match = {
+		class = "(soffice|xdg-desktop-portal-gtk)",
+	},
+	tile = true,
+})
+
+hl.window_rule({
+	name = "keepassxc-modal-to-tile",
+	match = {
+		title = "Unlock Database - KeePassXC",
+	},
+	tile = true,
 })
