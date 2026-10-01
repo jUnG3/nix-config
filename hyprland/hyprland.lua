@@ -13,7 +13,7 @@ require("monitors")
 
 local terminal = "kitty"
 local fileManager = "lf"
-local menu = "rofi -show combi"
+local menu = "rofi -theme material"
 
 -------------------
 ---- AUTOSTART ----
