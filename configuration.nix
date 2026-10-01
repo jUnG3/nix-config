@@ -283,6 +283,7 @@ in
       rofi
       rofi-pass
       waybar
+      quickshell
       awww
       hyprpaper
       hyprlock
