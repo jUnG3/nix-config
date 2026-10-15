@@ -265,6 +265,7 @@ in
 
     etc = {
       "hypr".source = ./hyprland;
+      "xdg/waybar".source = ./waybar;
     };
 
     systemPackages = with pkgs; [
