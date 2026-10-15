@@ -440,7 +440,9 @@ in
       gnucash
       libreoffice-still
       audacity
-      ffmpeg-full
+      (ffmpeg-full.override {
+        withWhisper = false;
+      })
       satty
       grim
       gpclient
