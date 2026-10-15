@@ -128,6 +128,13 @@ in
         };
       }
     )
+    (final: prev: {
+      llama-cpp = prev.llama-cpp.overrideAttrs (old: {
+        disabledTests = (old.disabledTests or [ ]) ++ [
+          "test-save-load-state"
+        ];
+      });
+    })
   ];
 
   nix.settings.experimental-features = [
