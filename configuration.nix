@@ -45,11 +45,23 @@ let
 in
 {
   nixpkgs.overlays = [
-    (final: prev: {
-      ffmpeg-full = prev.ffmpeg-full.override {
-        withWhisper = false;
-      };
-    })
+    (
+      final: prev:
+      let
+        # Use the host's pinned Nixpkgs without third-party overlays.
+        hostPkgs = import pkgs.path {
+          system = pkgs.stdenv.hostPlatform.system;
+          config.allowUnfree = true;
+          overlays = [ ];
+        };
+      in
+      {
+        ffmpeg-full = prev.ffmpeg-full.override {
+          withWhisper = true;
+          inherit (hostPkgs) whisper-cpp;
+        };
+      }
+    )
   ];
 
   nix.settings.experimental-features = [
