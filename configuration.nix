@@ -8,7 +8,6 @@
 let
   username = "junge";
   homeDirectory = "/home/${username}";
-  mountPoint = "${homeDirectory}/mnt/ivana-slike";
   wallpapers = import ./wallpapers.nix { inherit pkgs; };
 
   mpdConfig = pkgs.writeText "mpd.conf" ''
