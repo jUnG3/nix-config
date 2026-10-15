@@ -44,6 +44,14 @@ let
   '';
 in
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      ffmpeg-full = prev.ffmpeg-full.override {
+        withWhisper = false;
+      };
+    })
+  ];
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -422,9 +430,7 @@ in
       gnucash
       libreoffice-still
       audacity
-      (ffmpeg-full.override {
-        withWhisper = false;
-      })
+      ffmpeg-full
       satty
       grim
       gpclient
