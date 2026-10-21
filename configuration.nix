@@ -2,6 +2,7 @@
   config,
   pkgs,
   unstable,
+  opencode,
   ...
 }:
 
@@ -565,7 +566,7 @@ in
       lutris
       winetricks
       nvtopPackages.amd
-      opencode
+      opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
       playwright
 
       dotnet-sdk_10
