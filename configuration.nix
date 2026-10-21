@@ -261,11 +261,13 @@ in
 
     sessionVariables = {
       HYPRLAND_CONFIG = "/etc/${config.environment.etc."hypr".target}/hyprland.lua";
+      KITTY_CONFIG_DIRECTORY = "/etc/${config.environment.etc."kitty".target}";
     };
 
     etc = {
       "hypr".source = ./hyprland;
       "xdg/waybar".source = ./waybar;
+      "kitty".source = ./kitty;
     };
 
     systemPackages = with pkgs; [
