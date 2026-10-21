@@ -6,6 +6,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     opencode.url = "github:anomalyco/opencode/v2.1.2";
     nix-amd-ai.url = "github:noamsto/nix-amd-ai";
+    opencode.url = "github:anomalyco/opencode/v2.1.2";
   };
 
   outputs =
@@ -14,6 +15,7 @@
       nixpkgs-unstable,
       opencode,
       nix-amd-ai,
+      opencode,
       ...
     }:
     let
