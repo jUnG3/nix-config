@@ -235,8 +235,15 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("mpc prev"), { locked = true })
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
--- The original window-rule examples were commented out, so no active window
--- rules are added here. Native 0.55.4 rules use hl.window_rule({...}).
+-- Start World of Warcraft fullscreen without animated size transitions.
+hl.window_rule({
+	name = "world-of-warcraft-fullscreen",
+	match = {
+    title = "World of Warcraft"
+	},
+	fullscreen = true,
+	no_anim = true,
+})
 
 hl.window_rule({
 	name = "modal-to-tile",
