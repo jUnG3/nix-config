@@ -293,6 +293,7 @@ in
       hyprshot
       dunst
       firefox
+      newsflash
       foot
       keepassxc
       git-credential-keepassxc
