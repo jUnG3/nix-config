@@ -267,6 +267,17 @@ in
 
     etc = {
       "hypr".source = ./hyprland;
+      "rofi/theme.rasi".source = ./rofi-themes-collection/themes/squared-material-red.rasi;
+      "rofi/config.rasi".text = ''
+        configuration {
+          location: 0;
+          modi: "drun,run,window,ssh";
+          show-icons: true;
+          xoffset: 0;
+          yoffset: 0;
+        }
+        @theme "/etc/rofi/theme.rasi"
+      '';
       "xdg/waybar".source = ./waybar;
       "kitty".source = ./kitty;
     };

@@ -13,8 +13,15 @@ require("monitors")
 
 local terminal = "kitty"
 local fileManager = "lf"
-local menu = "rofi -theme material -show drun"
+local menu = "rofi -config /etc/rofi/config.rasi -show drun"
 local browser = "firefox"
+
+-- Use Firefox's configured default search engine without building a search URL.
+local webSearch = string.format([[
+sh -c 'query=$(rofi -config /etc/rofi/config.rasi -dmenu -p "Search web" < /dev/null) || exit 0
+[ -n "$query" ] || exit 0
+exec %s --search "$query"'
+]], browser)
 
 -------------------
 ---- AUTOSTART ----
@@ -170,6 +177,7 @@ hl.bind(
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(webSearch))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd(browser))
