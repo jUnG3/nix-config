@@ -244,7 +244,7 @@ hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("swapcol l"))
 hl.window_rule({
 	name = "world-of-warcraft-fullscreen",
 	match = {
-    title = "World of Warcraft"
+		title = "World of Warcraft",
 	},
 	fullscreen = true,
 	no_anim = true,
