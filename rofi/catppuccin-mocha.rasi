@@ -1,0 +1,100 @@
+/* Catppuccin Mocha with lavender accents. */
+* {
+    font: "Fira Code 12";
+
+    base: #1e1e2e;
+    surface0: #313244;
+    text: #cdd6f4;
+    subtext0: #a6adc8;
+    lavender: #b4befe;
+    red: #f38ba8;
+
+    background-color: transparent;
+    text-color: @text;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    width: 540px;
+    border: 2px;
+    border-color: @lavender;
+    border-radius: 16px;
+    background-color: @base;
+}
+
+mainbox {
+    padding: 16px;
+    spacing: 12px;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    padding: 12px;
+    spacing: 10px;
+    border-radius: 10px;
+    background-color: @surface0;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @lavender;
+}
+
+entry {
+    placeholder: "Type to search…";
+    placeholder-color: @subtext0;
+}
+
+prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
+}
+
+message {
+    border-radius: 10px;
+    background-color: @surface0;
+}
+
+textbox {
+    padding: 10px;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    spacing: 4px;
+    fixed-height: false;
+}
+
+element {
+    padding: 10px;
+    spacing: 10px;
+    border-radius: 8px;
+}
+
+element normal active, element alternate active {
+    text-color: @lavender;
+}
+
+element normal urgent, element alternate urgent {
+    text-color: @red;
+}
+
+element selected normal, element selected active {
+    background-color: @lavender;
+    text-color: @base;
+}
+
+element selected urgent {
+    background-color: @red;
+    text-color: @base;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element-text {
+    text-color: inherit;
+}

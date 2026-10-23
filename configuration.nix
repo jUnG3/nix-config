@@ -267,7 +267,7 @@ in
 
     etc = {
       "hypr".source = ./hyprland;
-      "rofi/theme.rasi".source = ./rofi-themes-collection/themes/squared-material-red.rasi;
+      "rofi/theme.rasi".source = ./rofi/catppuccin-mocha.rasi;
       "rofi/config.rasi".text = ''
         configuration {
           location: 0;
