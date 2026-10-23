@@ -172,7 +172,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " ALT + B", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd(browser))
 
 -- Move focus with mainMod + arrow keys.
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
