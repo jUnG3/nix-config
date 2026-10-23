@@ -233,6 +233,8 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("mpc prev"), { locked = true })
 
 hl.bind(mainMod .. " + period", hl.dsp.layout("move +col"))
 hl.bind(mainMod .. " + comma", hl.dsp.layout("move -col"))
+hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("swapcol r"))
+hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("swapcol l"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
