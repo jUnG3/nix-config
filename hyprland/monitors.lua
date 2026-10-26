@@ -19,8 +19,9 @@ hl.monitor({
 
 hl.monitor({
 	output = "desc:China Star Optoelectronics Technology Co. Ltd MNE007ZA3-2",
-	mode = "auto",
+	mode = "preferred",
 	position = "auto-right",
+	scale = "auto",
 })
 
 hl.monitor({
