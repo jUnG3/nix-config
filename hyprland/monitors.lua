@@ -17,3 +17,14 @@ hl.monitor({
 	transform = 3,
 })
 
+hl.monitor({
+	output = "desc:China Star Optoelectronics Technology Co. Ltd MNE007ZA3-2",
+	mode = "preferred",
+	position = "auto-right",
+})
+
+hl.monitor({
+	output = "desc:Samsung Electric Company U28E590 HTPK403640",
+	mode = "2560x1440@60",
+	position = "auto-left",
+})
