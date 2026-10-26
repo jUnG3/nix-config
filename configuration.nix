@@ -288,6 +288,7 @@ in
       emacs
       git
       wget
+      curl
       htop
       btop
       aider-chat
@@ -320,6 +321,7 @@ in
       satty
       grim
       gpclient
+      gnutar
 
       gcc
       clang-tools
@@ -337,6 +339,7 @@ in
       fd
       nodejs
       python3
+      tree-sitter
 
       jdk21
       jdt-language-server
