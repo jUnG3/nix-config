@@ -143,10 +143,11 @@ hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "a
 hl.config({
 	input = {
 		kb_layout = "us",
-		kb_variant = "",
-		kb_model = "",
+		kb_variant = "basic",
+		kb_model = "pc105",
 		kb_options = "",
 		kb_rules = "",
+		resolve_binds_by_sym = true,
 
 		follow_mouse = 1,
 		sensitivity = 0,
@@ -163,6 +164,13 @@ hl.config({
 hl.device({
 	name = "epic-mouse-v1",
 	sensitivity = -0.5,
+})
+
+hl.device({
+	name = "at-translated-set-2-keyboard",
+	kb_layout = "tuxedo_colemak_ansi",
+	kb_variant = "basic",
+	kb_model = "pc105",
 })
 
 ---------------------
