@@ -17,11 +17,14 @@ local menu = "rofi -config /etc/rofi/config.rasi -show drun"
 local browser = "firefox"
 
 -- Use Firefox's configured default search engine without building a search URL.
-local webSearch = string.format([[
+local webSearch = string.format(
+	[[
 sh -c 'query=$(rofi -config /etc/rofi/config.rasi -dmenu -p "Search web" < /dev/null) || exit 0
 [ -n "$query" ] || exit 0
 exec %s --search "$query"'
-]], browser)
+]],
+	browser
+)
 
 -------------------
 ---- AUTOSTART ----
