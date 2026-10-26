@@ -153,7 +153,7 @@ hl.config({
 		sensitivity = 0,
 
 		touchpad = {
-			natural_scroll = false,
+			natural_scroll = true,
 		},
 	},
 })
