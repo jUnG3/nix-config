@@ -144,10 +144,6 @@ in
       };
     };
 
-    light = {
-      enable = true;
-    };
-
     gamescope = {
       enable = true;
     };
