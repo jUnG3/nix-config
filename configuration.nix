@@ -263,6 +263,7 @@ in
     sessionVariables = {
       HYPRLAND_CONFIG = "/etc/${config.environment.etc."hypr".target}/hyprland.lua";
       KITTY_CONFIG_DIRECTORY = "/etc/${config.environment.etc."kitty".target}";
+      LOMBOK_JAR = "${pkgs.lombok}/share/java/lombok.jar";
     };
 
     etc = {
@@ -343,6 +344,7 @@ in
 
       jdk21
       jdt-language-server
+      lombok
       python315
       gradle
       discord
