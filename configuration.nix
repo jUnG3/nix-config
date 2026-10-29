@@ -468,6 +468,7 @@ in
       fd
       nodejs
       python3
+      uv
       tree-sitter
 
       jdk21
