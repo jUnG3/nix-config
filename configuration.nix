@@ -42,6 +42,12 @@ let
       fit_mode = cover
     }
   '';
+
+  linkedin-mcp = pkgs.writeShellScriptBin "linkedin-mcp" ''
+    export NIX_LD_LIBRARY_PATH="/run/current-system/sw/share/nix-ld/lib"
+    export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+    exec ${pkgs.uv}/bin/uvx mcp-server-linkedin@latest "$@"
+  '';
 in
 {
   nix.settings.experimental-features = [
@@ -55,6 +61,41 @@ in
   };
 
   programs = {
+
+    nix-ld = {
+      enable = true;
+
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib
+        glib
+        nss
+        nspr
+        dbus
+        atk
+        at-spi2-atk
+        cups
+        libdrm
+        expat
+        libxkbcommon
+        pango
+        cairo
+        alsa-lib
+        mesa
+        libgbm
+        gtk3
+
+        # X11 libraries
+        # # Current Nixpkgs
+        libx11
+        libxcomposite
+        libxdamage
+        libxext
+        libxfixes
+        libxrandr
+        libxcb
+      ];
+    };
+
     ssh.startAgent = true;
 
     zsh = {
@@ -359,6 +400,7 @@ in
       nodejs
       python3
       tree-sitter
+      linkedin-mcp
 
       jdk21
       jdt-language-server
