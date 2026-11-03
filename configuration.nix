@@ -179,6 +179,10 @@ in
     openssh.enable = false;
     usbmuxd.enable = true;
 
+    lact = {
+      enable = true;
+    };
+
     xserver = {
       enable = false;
       videoDrivers = [ "amdgpu" ];
