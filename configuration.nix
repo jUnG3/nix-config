@@ -387,6 +387,7 @@ in
       imv
       lazygit
       localsend
+      lact
 
       rclone
       fuse3
