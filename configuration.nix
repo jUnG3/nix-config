@@ -386,6 +386,7 @@ in
       shotwell
       imv
       lazygit
+      localsend
 
       rclone
       fuse3
