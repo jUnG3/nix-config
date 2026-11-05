@@ -171,6 +171,11 @@ hl.device({
 
 local mainMod = "SUPER"
 
+hl.bind(
+	"Print",
+	hl.dsp.exec_cmd('grim - | satty -f - --copy-command wl-copy -o "~/Pictures/Screenshots/%Y%m%d_%H%M%S.png"')
+)
+
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
 hl.bind(
