@@ -179,6 +179,19 @@ in
     openssh.enable = false;
     usbmuxd.enable = true;
 
+    ollama = {
+      enable = true;
+      # RX 5700 XT (gfx1010): use Vulkan rather than unsupported ROCm hardware.
+      package = pkgs.ollama-vulkan;
+      host = "127.0.0.1";
+      port = 11434;
+      loadModels = [
+        "llama3.1:8b"
+        "ministral-3:3b"
+        "qwen3.5:4b"
+      ];
+    };
+
     lact = {
       enable = true;
     };
