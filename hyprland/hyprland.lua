@@ -258,6 +258,7 @@ hl.bind(mainMod .. " + CTRL + period", hl.dsp.layout("colresize +conf"))
 hl.bind(mainMod .. " + CTRL + comma", hl.dsp.layout("colresize -conf"))
 hl.bind("ALT + period", hl.dsp.layout("consume_or_expel next"))
 hl.bind("ALT + comma", hl.dsp.layout("consume_or_expel prev"))
+hl.bind("ALT + f", hl.dsp.layout("fit_into_view"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
