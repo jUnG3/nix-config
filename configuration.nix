@@ -298,6 +298,7 @@ in
       '';
       "xdg/waybar".source = ./waybar;
       "kitty".source = ./kitty;
+      "opencode".source = ./opencode;
     };
 
     systemPackages = with pkgs; [
