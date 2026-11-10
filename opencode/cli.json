@@ -1,9 +1,16 @@
 {
   "$schema": "https://opencode.ai/v2/cli.json",
   "diffs": {
-    "view": "split"
+    "view": "split",
+    "wrap": "word"
   },
   "theme": {
     "name": "catppuccin"
-  }
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false,
+    "thinking": "show"
+  },
+  "animations": true
 }
