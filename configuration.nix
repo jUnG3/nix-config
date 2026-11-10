@@ -431,6 +431,7 @@ in
       blueman
       gnome-themes-extra
       pinentry-gnome3
+      warp
 
       wine
       lutris
