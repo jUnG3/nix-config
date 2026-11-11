@@ -41,26 +41,31 @@
       }
     },
     "ollama": {
+      "package": "@opencode/ai/providers/openai-compatible",
       "settings": {
+        "apiKey": "ollama",
         "baseURL": "http://127.0.0.1:11434/v1"
       },
       "models": {
         "ministral-3:3b-16k": {
           "limit": {
             "context": 16384,
-            "output": 8192
+            "output": 4096
+          },
+          "options": {
+            "requireFinishReason": false
           }
         },
         "llama3.1:8b-16k": {
           "limit": {
             "context": 16384,
-            "output": 8192
+            "output": 4096
           }
         },
         "qwen3.5:4b-16k": {
           "limit": {
             "context": 16384,
-            "output": 8192
+            "output": 4096
           }
         }
       }
@@ -92,13 +97,15 @@
         "oauth": false,
         "headers": {
           "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
-        }
+        },
+        "codemode": true
       },
       "linkedin": {
         "type": "local",
         "command": [
           "linkedin-mcp"
         ],
+        "codemode": true,
         "timeout": 120000
       }
     }
