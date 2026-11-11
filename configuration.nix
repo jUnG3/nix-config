@@ -340,6 +340,7 @@ in
       "xdg/waybar".source = ./waybar;
       "kitty".source = ./kitty;
       "opencode".source = ./opencode;
+      "gitconfig".source = ./gitconfig;
     };
 
     systemPackages = with pkgs; [
@@ -347,6 +348,8 @@ in
       fzf
       emacs
       git
+      delta
+      diffnav
       wget
       curl
       htop
