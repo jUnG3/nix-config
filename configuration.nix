@@ -403,6 +403,8 @@ in
       python3
       tree-sitter
       linkedin-mcp
+      uv
+      jq
 
       jdk21
       jdt-language-server
