@@ -157,6 +157,10 @@ in
         credential.helper = "libsecret";
       };
     };
+
+    virt-manager = {
+      enable = true;
+    };
   };
 
   time.timeZone = "Europe/Zagreb";
@@ -206,6 +210,7 @@ in
         "input"
         "scanner"
         "lpadmin"
+        "libvirtd"
       ];
     };
     defaultUserShell = pkgs.zsh;
@@ -271,6 +276,18 @@ in
   };
 
   virtualisation = {
+
+    libvirtd = {
+      enable = false;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm = {
+          enable = true;
+        };
+      };
+    };
+
     docker = {
       enable = true;
 
