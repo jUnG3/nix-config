@@ -402,6 +402,7 @@ in
       gpclient
       gnutar
       magic-wormhole-rs
+      jmtpfs
 
       gcc
       clang-tools
