@@ -401,6 +401,7 @@ in
       grim
       gpclient
       gnutar
+      magic-wormhole-rs
 
       gcc
       clang-tools
