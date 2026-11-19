@@ -107,6 +107,11 @@
         ],
         "codemode": true,
         "timeout": 120000
+      },
+      "selenium": {
+        "type": "local",
+        "command": ["npx", "-y", "selenium-webdriver-mcp@latest"],
+        "codemode": true
       }
     }
   },
