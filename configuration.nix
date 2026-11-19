@@ -403,6 +403,7 @@ in
       gnutar
       magic-wormhole-rs
       jmtpfs
+      vlc
 
       gcc
       clang-tools
